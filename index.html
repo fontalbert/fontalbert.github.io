@@ -1,7 +1,138 @@
-<html>
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Albert Fontalbert - Projectes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #777;
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background-color: white;
+      border-radius: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .project-card .content {
+      padding: 1rem;
+    }
+
+    .project-card .content h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card .content p {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
 
 <body>
-    <h1>Albert Font --Developer and Crypto Investor--</h1>
+  <header>
+    <h1>Albert Fontalbert</h1>
+    <p>Desenvolupador Fullstack | Projectes i Aplicacions</p>
+  </header>
+
+  <section class="projects">
+    <div class="project-card">
+      <img src="projecte1.jpg" alt="Projecte 1">
+      <div class="content">
+        <h3>Projecte 1</h3>
+        <p>Descripció breu del projecte, funcionalitat clau i eines utilitzades.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="projecte2.jpg" alt="Projecte 2">
+      <div class="content">
+        <h3>Projecte 2</h3>
+        <p>Descripció breu del projecte, funcionalitat clau i eines utilitzades.</p>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <img src="projecte3.jpg" alt="Projecte 3">
+      <div class="content">
+        <h3>Projecte 3</h3>
+        <p>Descripció breu del projecte, funcionalitat clau i eines utilitzades.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 Albert Fontalbert | Desenvolupador Web
+  </footer>
+
+  <!-- Incloure AOS per animacions al scroll -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      easing: 'ease-in-out',
+      once: true
+    });
+
+    document.querySelectorAll('.project-card').forEach(card => {
+      card.setAttribute('data-aos', 'fade-up');
+    });
+  </script>
 </body>
 
 </html>
