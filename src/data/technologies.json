@@ -1,0 +1,26 @@
+{
+  "Frontend": [
+    { "name": "React", "years": 4 },
+    { "name": "HTML/CSS", "years": 6 },
+    { "name": "Tailwind CSS", "years": 2 },
+    { "name": "Vue.js", "years": 2 },
+    { "name": "TypeScript", "years": 3 }
+  ],
+  "Backend": [
+    { "name": "Node.js", "years": 5 },
+    { "name": "Express", "years": 5 },
+    { "name": "Python", "years": 2 },
+    { "name": "GraphQL", "years": 1 }
+  ],
+  "Database": [
+    { "name": "MongoDB", "years": 4 },
+    { "name": "PostgreSQL", "years": 3 },
+    { "name": "Redis", "years": 2 }
+  ],
+  "DevOps": [
+    { "name": "Git", "years": 6 },
+    { "name": "Docker", "years": 3 },
+    { "name": "CI/CD", "years": 3 },
+    { "name": "AWS", "years": 2 }
+  ]
+} 

@@ -1,0 +1,23 @@
+[
+  {
+    "title": "E-Commerce Platform",
+    "description": "Plataforma completa de comercio electrónico con panel de administración.",
+    "image": "/images/ecommerce.jpg",
+    "tags": ["React", "Node.js", "MongoDB", "Stripe"],
+    "links": {
+      "code": "https://github.com/fontalbert/ecommerce-platform",
+      "demo": "https://ecommerce-demo.com"
+    },
+    "featured": true
+  },
+  {
+    "title": "Weather Dashboard",
+    "description": "Dashboard meteorológico con visualizaciones interactivas.",
+    "image": "/images/weather.jpg",
+    "tags": ["React", "D3.js", "OpenWeather API", "Mapbox"],
+    "links": {
+      "project": "https://github.com/fontalbert/weather-dashboard"
+    },
+    "featured": true
+  }
+] 

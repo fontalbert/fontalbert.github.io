@@ -1,0 +1,38 @@
+[
+  {
+    "title": "Senior Full Stack Developer",
+    "company": "Tech Solutions Barcelona",
+    "period": "2022 - Actualidad",
+    "description": "Liderando el desarrollo de aplicaciones web escalables para clientes enterprise usando React, Node.js y AWS.",
+    "highlights": [
+      "Implementé una arquitectura de microservicios que mejoró el rendimiento en un 40%",
+      "Lideré un equipo de 5 desarrolladores en proyectos críticos",
+      "Reduje el tiempo de despliegue en un 60% implementando CI/CD con GitHub Actions"
+    ],
+    "tags": ["React", "Node.js", "MongoDB", "AWS", "Docker", "Kubernetes"]
+  },
+  {
+    "title": "Full Stack Developer",
+    "company": "Digital Innovation Lab",
+    "period": "2020 - 2021",
+    "description": "Desarrollo de plataformas SaaS innovadoras desde la conceptualización hasta el despliegue.",
+    "highlights": [
+      "Desarrollé un MVP completo en 3 meses que consiguió 1000 usuarios en el primer mes",
+      "Implementé sistemas de pagos con Stripe procesando más de 50k€/mes",
+      "Optimicé queries de base de datos reduciendo el tiempo de carga en un 70%"
+    ],
+    "tags": ["Vue.js", "Express", "PostgreSQL", "Redis", "Stripe API"]
+  },
+  {
+    "title": "Grado en Ingeniería Informática",
+    "company": "Universidad Politécnica de Cataluña",
+    "period": "2016 - 2020",
+    "description": "Especialización en Ingeniería del Software y Sistemas de Información.",
+    "highlights": [
+      "Proyecto final: Sistema de recomendación con Machine Learning (Nota: 9.5/10)",
+      "Beca de excelencia académica durante 2 años",
+      "Participación en hackathons universitarios (2 primeros puestos)"
+    ],
+    "tags": ["Java", "Python", "C++", "SQL", "Machine Learning"]
+  }
+] 
