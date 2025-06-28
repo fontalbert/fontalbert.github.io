@@ -1,22 +1,21 @@
 [
   {
-    "title": "E-Commerce Platform",
-    "description": "Plataforma completa de comercio electrónico con panel de administración.",
-    "image": "/images/ecommerce.jpg",
-    "tags": ["React", "Node.js", "MongoDB", "Stripe"],
+    "title": "UdG Voluntariat",
+    "description": "Plataforma completa de voluntariat d'estudiants.",
+    "image": "/images/proyectos/udg_voluntariat.jpg",
+    "tags": ["Razor", "MVC", "Sql Server", "Git", "SSO", "Bootstrap"],
     "links": {
-      "code": "https://github.com/fontalbert/ecommerce-platform",
-      "demo": "https://ecommerce-demo.com"
+      "project": "https://apps.udg.edu/UCSOP"
     },
     "featured": true
   },
   {
-    "title": "Weather Dashboard",
-    "description": "Dashboard meteorológico con visualizaciones interactivas.",
-    "image": "/images/weather.jpg",
-    "tags": ["React", "D3.js", "OpenWeather API", "Mapbox"],
+    "title": "WCS Impact Map",
+    "description": "Mapa par estudiar y ver el estado de las areas biologicas protegidas.",
+    "image": "/images/proyectos/wcs_impactmap.jpg",
+    "tags": ["React", "C#", "Sql Server", "DNN", "ArcGIS", "SCSS"],
     "links": {
-      "project": "https://github.com/fontalbert/weather-dashboard"
+      "project": "https://impact.wcs.org/en-us/impactApp"
     },
     "featured": true
   }

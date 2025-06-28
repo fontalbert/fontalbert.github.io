@@ -18,10 +18,10 @@ const About = () => (
     </div>
     <div className="flex flex-col items-center gap-2">
       <a href={about.cv} download className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:from-blue-600 hover:to-purple-600 transition">Descargar CV</a>
-      <div className="text-gray-500 text-sm mt-2">
+      <div className="text-gray-500 text-sm mt-2 text-center">
         <span className="block"><i className="fas fa-envelope mr-1"></i>{about.email}</span>
-        <span className="block"><i className="fas fa-phone mr-1"></i>{about.phone}</span>
         <span className="block"><i className="fas fa-map-marker-alt mr-1"></i>{about.location}</span>
+        <span className="block"><i className="fas fa-phone mr-1"></i>{about.phone}</span>
       </div>
     </div>
   </section>
