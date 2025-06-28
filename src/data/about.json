@@ -1,17 +1,17 @@
 {
   "name": "Albert Font Sala",
   "role": "Full Stack Developer",
-  "description": "Desarrollador Full Stack apasionado por crear soluciones web innovadoras. Experiencia en React, Node.js, MongoDB y arquitecturas cloud.",
+  "description": "Desarrollador Full Stack apasionado por crear soluciones web innovadoras y experiencias de usuario.",
   "photo": "/albert-font_avatar.jpg",
   "location": "Girona, España",
   "email": "albert.font@outlook.com",
   "phone": "+34 626 480 755",
   "cv": "/cv-albert-font.pdf",
   "social": {
-    "linkedin": "https://www.linkedin.com/in/albert-font/",
+    "linkedin": "https://www.linkedin.com/in/albertfontdev/",
     "github": "https://github.com/fontalbert"
   },
   "technologies": [
-    "React", "Node.js", "MongoDB", "TypeScript", "Tailwind CSS", "AWS"
+    "React", "Node.js", "SQL Server", "Javascript", "Bootstrap", "Tailwind CSS"
   ]
 } 
