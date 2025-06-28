@@ -1,26 +1,38 @@
 {
-  "Frontend": [
-    { "name": "React", "years": 4 },
-    { "name": "HTML/CSS", "years": 6 },
-    { "name": "Tailwind CSS", "years": 2 },
-    { "name": "Vue.js", "years": 2 },
-    { "name": "TypeScript", "years": 3 }
-  ],
-  "Backend": [
-    { "name": "Node.js", "years": 5 },
-    { "name": "Express", "years": 5 },
-    { "name": "Python", "years": 2 },
-    { "name": "GraphQL", "years": 1 }
-  ],
-  "Database": [
-    { "name": "MongoDB", "years": 4 },
-    { "name": "PostgreSQL", "years": 3 },
-    { "name": "Redis", "years": 2 }
-  ],
-  "DevOps": [
-    { "name": "Git", "years": 6 },
-    { "name": "Docker", "years": 3 },
-    { "name": "CI/CD", "years": 3 },
-    { "name": "AWS", "years": 2 }
-  ]
+  "Frontend": {
+    "icon": "/icons/frontend.svg",
+    "items": [
+      { "name": "React", "years": 4, "icon": "devicon-react-original" },
+      { "name": "HTML/CSS", "years": 6, "icon": "devicon-html5-plain" },
+      { "name": "Tailwind CSS", "years": 2, "icon": "devicon-tailwindcss-plain" },
+      { "name": "Vue.js", "years": 2, "icon": "devicon-vuejs-plain" },
+      { "name": "TypeScript", "years": 3, "icon": "devicon-typescript-plain" }
+    ]
+  },
+  "Backend": {
+    "icon": "/icons/backend.svg",
+    "items": [
+      { "name": "Node.js", "years": 5, "icon": "devicon-nodejs-plain" },
+      { "name": "Express", "years": 5, "icon": "devicon-express-original" },
+      { "name": "Python", "years": 2, "icon": "devicon-python-plain" },
+      { "name": "GraphQL", "years": 1, "icon": "devicon-graphql-plain" }
+    ]
+  },
+  "Database": {
+    "icon": "/icons/database.svg",
+    "items": [
+      { "name": "MongoDB", "years": 4, "icon": "devicon-mongodb-plain" },
+      { "name": "PostgreSQL", "years": 3, "icon": "devicon-postgresql-plain" },
+      { "name": "Redis", "years": 2, "icon": "devicon-redis-plain" }
+    ]
+  },
+  "DevOps": {
+    "icon": "/icons/devops.svg",
+    "items": [
+      { "name": "Git", "years": 6, "icon": "devicon-git-plain" },
+      { "name": "Docker", "years": 3, "icon": "devicon-docker-plain" },
+      { "name": "CI/CD", "years": 3, "icon": "devicon-githubactions-plain" },
+      { "name": "AWS", "years": 2, "icon": "devicon-amazonwebservices-plain" }
+    ]
+  }
 } 

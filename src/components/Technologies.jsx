@@ -2,24 +2,40 @@ import React from "react";
 import technologies from "../data/technologies.json";
 
 const Technologies = () => (
-  <section id="tecnologias" className="max-w-4xl mx-auto py-20 px-4">
-    <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">Tecnologías y Áreas de Especialización</h2>
-    <div className="grid md:grid-cols-2 gap-8">
-      {Object.entries(technologies).map(([category, techs]) => (
-        <div key={category}>
-          <h3 className="text-lg font-semibold text-blue-700 mb-2">{category}</h3>
-          <ul className="space-y-2">
-            {techs.map((tech) => (
-              <li key={tech.name} className="flex justify-between items-center">
-                <span className="text-gray-700">{tech.name}</span>
-                <span className="text-blue-500 text-sm">{tech.years} años de experiencia</span>
-              </li>
+  <section
+    id="tecnologias"
+    className="max-w-6xl mx-auto py-20 px-4"
+  >
+    <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">
+      Tecnologías y Áreas de Especialización
+    </h2>
+    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      {Object.entries(technologies).map(([category, data]) => (
+        <div
+          key={category}
+          className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center hover:scale-105 transition-transform"
+        >
+          <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
+            {category}
+          </h3>
+          <div className="grid gap-3 w-full">
+            {data.items.map((tech) => (
+              <div
+                key={tech.name}
+                className="flex items-center gap-3 bg-blue-50 rounded-lg px-3 py-2 hover:bg-blue-100 transition"
+              >
+                <i className={`${tech.icon} text-2xl text-blue-700`}></i>
+                <span className="font-medium text-gray-800">{tech.name}</span>
+                <span className="ml-auto text-xs text-blue-500">
+                  {tech.years} años
+                </span>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       ))}
     </div>
   </section>
 );
 
-export default Technologies; 
+export default Technologies;
