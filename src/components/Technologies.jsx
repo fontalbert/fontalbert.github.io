@@ -2,8 +2,8 @@ import React from "react";
 import technologies from "../data/technologies.json";
 
 const Technologies = () => (
-  <section id="sobre-mi" className="max-w-4xl mx-auto py-20 px-4">
-    <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">Sobre mí</h2>
+  <section id="tecnologias" className="max-w-4xl mx-auto py-20 px-4">
+    <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">Tecnologías y Áreas de Especialización</h2>
     <div className="grid md:grid-cols-2 gap-8">
       {Object.entries(technologies).map(([category, techs]) => (
         <div key={category}>
@@ -12,7 +12,7 @@ const Technologies = () => (
             {techs.map((tech) => (
               <li key={tech.name} className="flex justify-between items-center">
                 <span className="text-gray-700">{tech.name}</span>
-                <span className="text-blue-500 text-sm">{tech.years} años</span>
+                <span className="text-blue-500 text-sm">{tech.years} años de experiencia</span>
               </li>
             ))}
           </ul>
