@@ -18,5 +18,15 @@
       "project": "https://impact.wcs.org/en-us/impactApp"
     },
     "featured": true
+  },
+  {
+    "title": "Diàlisis App",
+    "description": "Aplicación web especializada para la gestión diaria de pacientes de diàlisi de la Clínica Girona.",
+    "image": "/images/proyectos/dialisis_app.jpg",
+    "tags": ["React", "TypeScript", "PostgreSQL", "Supabase", "Vercel", "Tailwind CSS"],
+    "links": {
+      "project": "https://impact.wcs.org/en-us/impactApp"
+    },
+    "featured": true
   }
 ] 
