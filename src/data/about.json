@@ -1,9 +1,10 @@
 {
   "name": "Albert Font Sala",
   "role": "Full Stack Developer",
-  "description": "Desarrollador Full Stack apasionado por crear soluciones web innovadoras y experiencias de usuario.",
+  "description": "Soy Albert, diseñador web enfocado en la simplicidad, la elegancia y la eficiencia. Me gusta crear páginas ligeras, bien estructuradas y visualmente cuidadas, donde cada detalle tiene un propósito. Diseño con intención: claro, limpio y con personalidad.",
   "photo": "/albert-font_avatar.jpg",
   "location": "Girona, España",
+  "birthday": "04/11/1979 22:30",
   "email": "albert.font@outlook.com",
   "phone": "",
   "cv": "/cv-albert-font.pdf",
@@ -12,6 +13,6 @@
     "github": "https://github.com/fontalbert"
   },
   "technologies": [
-    "React", "Node.js", "SQL Server", "Javascript", "Bootstrap", "Tailwind CSS"
+    "React", "Node.js", "Javascript", "Bootstrap", "C#", "ASP.NET", "SQL Server"
   ]
 } 

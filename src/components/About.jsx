@@ -1,5 +1,6 @@
 import React from "react";
 import about from "../data/about.json";
+import SwallowWire from "./SwallowWire";
 
 const About = () => (
   <section id="inicio" className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-24 pb-12">
@@ -8,8 +9,8 @@ const About = () => (
     <h2 className="text-lg text-blue-700 font-medium mb-2">{about.role}</h2>
     <p className="text-gray-600 max-w-xl text-center mb-4">{about.description}</p>
     <div className="flex gap-4 mb-4">
-      <a href={about.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-700 text-2xl"><i className="fab fa-linkedin"></i>LinkedIn</a>
-      <a href={about.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-gray-800 text-2xl"><i className="fab fa-github"></i>GitHub</a>
+      <a href={about.social.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-blue-700 text-2xl flex items-center"><i className="devicon devicon-linkedin-plain"></i></a>
+      <a href={about.social.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-gray-800 text-2xl flex items-center"><i className="devicon devicon-github-plain"></i></a>
     </div>
     <div className="flex flex-wrap justify-center gap-2 mb-6">
       {about.technologies.map((tech) => (
@@ -19,11 +20,13 @@ const About = () => (
     <div className="flex flex-col items-center gap-2">
       <a href={about.cv} download className="bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-2 rounded-full font-semibold shadow hover:from-blue-600 hover:to-purple-600 transition">Descargar CV</a>
       <div className="text-gray-500 text-sm mt-2 text-center">
-        <span className="block"><i className="fas fa-envelope mr-1"></i>{about.email}</span>
-        <span className="block"><i className="fas fa-map-marker-alt mr-1"></i>{about.location}</span>
-        <span className="block"><i className="fas fa-phone mr-1"></i>{about.phone}</span>
+        <span className="block"><i className="mr-1"></i>{about.email}</span>
+        <span className="block"><i className="mr-1"></i>{about.location}</span>
+        <span className="block"><i className="mr-1"></i>{about.birthday}</span>
+        <span className="block"><i className="mr-1"></i>{about.phone}</span>
       </div>
     </div>
+    <SwallowWire />
   </section>
 );
 

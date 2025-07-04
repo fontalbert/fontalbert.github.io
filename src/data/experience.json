@@ -1,37 +1,51 @@
 [
   {
-    "title": "Senior Full Stack Developer",
-    "company": "Tech Solutions Barcelona",
-    "period": "2022 - Actualidad",
-    "description": "Liderando el desarrollo de aplicaciones web escalables para clientes enterprise usando React, Node.js y AWS.",
+    "title": "Full Stack Developer",
+    "company": "Disgrafic",
+    "period": "2011 - Actualidad",
+    "description": "Especializacion en desarrollo web y aplicaciones online, usando DotNetNuke como CMS o simplemente aplicaciones web basadas en React + Node.js o MVC NET.",
     "highlights": [
-      "Implementé una arquitectura de microservicios que mejoró el rendimiento en un 40%",
-      "Lideré un equipo de 5 desarrolladores en proyectos críticos",
-      "Reduje el tiempo de despliegue en un 60% implementando CI/CD con GitHub Actions"
+      "Responsable de la planificación, desarrollo y entrega de proyectos web asignados, desde la definición técnica hasta la puesta en producción.",
+      "Diseño de la arquitectura, elección de tecnologías y toma de decisiones clave en cada proyecto, en coordinación directa con la dirección.",
+      "Creación y optimización de bases de datos adaptadas a las necesidades de cada cliente y proyecto.",
+      "Uso de Azure DevOps para el control de versiones, seguimiento de tareas y despliegue continuo.",
+      " Participación en reuniones iniciales para la recogida de requisitos y establecimiento de plazos, asegurando la alineación con los objetivos de la empresa.",
+      "Implementación de soluciones tanto en frontend (React) como en backend (Node.js, .NET MVC), integrando tecnologías modernas y buenas prácticas.",
+      "Organización y distribución del trabajo de forma autónoma para cumplir con los plazos acordados con la empresa."
+      
     ],
     "tags": ["React", "Node.js", "MongoDB", "AWS", "Docker", "Kubernetes"]
   },
   {
-    "title": "Full Stack Developer",
-    "company": "Digital Innovation Lab",
-    "period": "2020 - 2021",
-    "description": "Desarrollo de plataformas SaaS innovadoras desde la conceptualización hasta el despliegue.",
+    "title": "PSDtoDNN",
+    "company": "PsDtoDNN",
+    "period": "2011 - 2018",
+    "description": "Llebe a cabo un site de conversion de diseños a implementacion de themes en HTML/CSS y javascript a partir de documentos de photoshop PSD.",
     "highlights": [
-      "Desarrollé un MVP completo en 3 meses que consiguió 1000 usuarios en el primer mes",
-      "Implementé sistemas de pagos con Stripe procesando más de 50k€/mes",
+      "Diseños medios y avanzados optimizados para la plataforma DNN",
+      "Reduje el tiempo de desarrollo en un 40% implementando SCSS y sistema mixto de Bootstrap CSS y Framework propio."
+    ],
+    "tags": ["React", "Node.js", "MongoDB", "AWS", "Docker", "Kubernetes"]
+  },
+  {
+    "title": "Consultant Junior",
+    "company": "Pasiona",
+    "period": "2007 - 2008",
+    "description": "Trabajando en un proyecto en el Banc Sabadell.",
+    "highlights": [
+      "Ayude en el desarrollo de una aplicación en C#, orientada a los directivos del banc Sabadell",
+      "Hice verificaciones, tests y pequeños desarrollos.",
       "Optimicé queries de base de datos reduciendo el tiempo de carga en un 70%"
     ],
     "tags": ["Vue.js", "Express", "PostgreSQL", "Redis", "Stripe API"]
   },
   {
     "title": "Grado en Ingeniería Informática",
-    "company": "Universidad Politécnica de Cataluña",
-    "period": "2016 - 2020",
+    "company": "EU Informatica Tomàs Cerdà",
+    "period": "2005 - 2008",
     "description": "Especialización en Ingeniería del Software y Sistemas de Información.",
     "highlights": [
-      "Proyecto final: Sistema de recomendación con Machine Learning (Nota: 9.5/10)",
-      "Beca de excelencia académica durante 2 años",
-      "Participación en hackathons universitarios (2 primeros puestos)"
+      
     ],
     "tags": ["Java", "Python", "C++", "SQL", "Machine Learning"]
   }

@@ -2,37 +2,44 @@
   "Frontend": {
     "icon": "/icons/frontend.svg",
     "items": [
-      { "name": "React", "years": 4, "icon": "devicon-react-original" },
-      { "name": "HTML/CSS", "years": 6, "icon": "devicon-html5-plain" },
-      { "name": "Tailwind CSS", "years": 2, "icon": "devicon-tailwindcss-plain" },
-      { "name": "Vue.js", "years": 2, "icon": "devicon-vuejs-plain" },
-      { "name": "TypeScript", "years": 3, "icon": "devicon-typescript-plain" }
+      
+      { "name": "HTML/CSS", "years": 17, "icon": "devicon-html5-plain" },
+      { "name": "jQuery.js", "years": 15, "icon": "devicon-jquery-plain" },
+      { "name": "Bootstrap", "years": 11, "icon": "devicon-bootstrap-plain" },
+      { "name": "Javascript", "years": 13, "icon": "devicon-javascript-plain" },
+      { "name": "React", "years": 8, "icon": "devicon-react-original" }
+      
     ]
   },
   "Backend": {
     "icon": "/icons/backend.svg",
     "items": [
-      { "name": "Node.js", "years": 5, "icon": "devicon-nodejs-plain" },
-      { "name": "Express", "years": 5, "icon": "devicon-express-original" },
-      { "name": "Python", "years": 2, "icon": "devicon-python-plain" },
-      { "name": "GraphQL", "years": 1, "icon": "devicon-graphql-plain" }
+      { "name": "C#", "years": 17, "icon": "devicon-csharp-plain" },
+      { "name": "ASP.NET", "years": 16, "icon": "devicon-dotnetcore-plain" },
+      { "name": "DotnetNuke", "years": 15, "icon": "devicon-nomad-plain" },
+      { "name": "ASP MVC", "years": 8, "icon": "devicon-redis-plain" },
+      { "name": "Node.js", "years": 6, "icon": "devicon-nodejs-plain" }
     ]
   },
   "Database": {
     "icon": "/icons/database.svg",
     "items": [
-      { "name": "MongoDB", "years": 4, "icon": "devicon-mongodb-plain" },
-      { "name": "PostgreSQL", "years": 3, "icon": "devicon-postgresql-plain" },
-      { "name": "Redis", "years": 2, "icon": "devicon-redis-plain" }
+      { "name": "SQL Server", "years": 16, "icon": "devicon-microsoftsqlserver-plain" },
+      { "name": "PostgreSQL", "years": 2, "icon": "devicon-postgresql-plain" },
+      { "name": "Supabase", "years": 2, "icon": "devicon-supabase-plain" },
+      { "name": "MongoDB", "years": 2, "icon": "devicon-mongodb-plain" },
+      { "name": "Redis", "years": 1, "icon": "devicon-redis-plain" }
     ]
   },
   "DevOps": {
     "icon": "/icons/devops.svg",
     "items": [
-      { "name": "Git", "years": 6, "icon": "devicon-git-plain" },
+      { "name": "Git", "years": 9, "icon": "devicon-git-plain" },
+      { "name": "Azure Devops", "years": 2, "icon": "devicon-azure-plain" },
+      { "name": "TortoiseSVN", "years": 5, "icon": "devicon-tortoisegit-plain" },
       { "name": "Docker", "years": 3, "icon": "devicon-docker-plain" },
-      { "name": "CI/CD", "years": 3, "icon": "devicon-githubactions-plain" },
       { "name": "AWS", "years": 2, "icon": "devicon-amazonwebservices-plain" }
+      
     ]
   }
 } 
