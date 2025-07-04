@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albert Font - Senior Full Stack Developer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Inter:wght@300;400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #1f2937;
+            line-height: 1.6;
+            background: #ffffff;
+        }
+        
+        .container {
+            max-width: 210mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a1f3a 0%, #2d3561 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(107,70,193,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .name {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .title {
+            font-size: 18px;
+            font-weight: 300;
+            color: #e5e7eb;
+            margin-bottom: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 30px;
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .icon {
+            width: 16px;
+            height: 16px;
+            fill: #6b46c1;
+        }
+        
+        /* Main Content */
+        .content {
+            display: grid;
+            grid-template-columns: 35% 65%;
+            gap: 0;
+        }
+        
+        .sidebar {
+            background: #f9fafb;
+            padding: 40px 30px;
+            border-right: 1px solid #e5e7eb;
+        }
+        
+        .main {
+            padding: 40px;
+        }
+        
+        /* Section Styles */
+        .section {
+            margin-bottom: 35px;
+        }
+        
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1f3a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: #6b46c1;
+            border-radius: 2px;
+        }
+        
+        /* Summary */
+        .summary {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #4b5563;
+            font-style: italic;
+            border-left: 3px solid #6b46c1;
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Skills */
+        .skill-category {
+            margin-bottom: 25px;
+        }
+        
+        .skill-category-title {
+            font-weight: 600;
+            color: #1a1f3a;
+            margin-bottom: 12px;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .skill-item {
+            margin-bottom: 12px;
+        }
+        
+        .skill-name {
+            font-size: 13px;
+            margin-bottom: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .skill-level {
+            font-size: 11px;
+            color: #6b46c1;
+            font-weight: 500;
+        }
+        
+        .skill-bar {
+            width: 100%;
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #6b46c1 0%, #8b5cf6 100%);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+        
+        /* Experience */
+        .experience-item {
+            margin-bottom: 30px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: #6b46c1;
+            border-radius: 50%;
+            border: 3px solid #f3f4f6;
+            box-shadow: 0 0 0 2px #6b46c1;
+        }
+        
+        .experience-item::after {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 20px;
+            bottom: -25px;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        
+        .experience-item:last-child::after {
+            display: none;
+        }
+        
+        .experience-header {
+            margin-bottom: 10px;
+        }
+        
+        .position {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1f3a;
+        }
+        
+        .company {
+            font-size: 16px;
+            color: #6b46c1;
+            font-weight: 500;
+        }
+        
+        .period {
+            font-size: 13px;
+            color: #6b7280;
+            margin-top: 4px;
+        }
+        
+        .achievements {
+            list-style: none;
+            margin-top: 12px;
+        }
+        
+        .achievements li {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.7;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .achievements li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #6b46c1;
+            font-weight: bold;
+        }
+        
+        /* Projects */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+        
+        .project-card {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover {
+            border-color: #6b46c1;
+            box-shadow: 0 4px 12px rgba(107, 70, 193, 0.1);
+        }
+        
+        .project-name {
+            font-weight: 600;
+            color: #1a1f3a;
+            margin-bottom: 8px;
+        }
+        
+        .project-tech {
+            font-size: 12px;
+            color: #6b46c1;
+            margin-bottom: 8px;
+        }
+        
+        .project-description {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.5;
+        }
+        
+        /* Languages & Interests */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
+        
+        .info-item {
+            font-size: 14px;
+            padding: 8px 0;
+        }
+        
+        .info-label {
+            font-weight: 600;
+            color: #1a1f3a;
+        }
+        
+        .info-value {
+            color: #4b5563;
+        }
+        
+        /* Philosophy Section */
+        .philosophy {
+            background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .philosophy::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(107,70,193,0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .philosophy-text {
+            font-size: 14px;
+            color: #4b5563;
+            line-height: 1.7;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .philosophy-title {
+            font-weight: 600;
+            color: #1a1f3a;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            font-size: 12px;
+            color: #6b7280;
+        }
+        
+        /* Page Break for PDF */
+        @media print {
+            .page-break {
+                page-break-after: always;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+            }
+            
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Albert Font</h1>
+                <p class="title">Senior Full Stack Developer & Innovation Catalyst</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span>Banyoles, Girona</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <span>albert.font@outlook.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <span>626 480 755</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
+                        </svg>
+                        <span>linkedin.com/in/albertfontdev</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        <span>fontalbert.github.io</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Technical Skills -->
+                <section class="section">
+                    <h2 class="section-title">Habilidades Técnicas</h2>
+                    
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Backend & Frameworks</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>DotNetNuke / ASP.NET</span>
+                                <span class="skill-level">Experto</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>C# / .NET Core</span>
+                                <span class="skill-level">Experto</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>SQL Server</span>
+                                <span class="skill-level">Avanzado</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Frontend & UI</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>JavaScript / React</span>
+                                <span class="skill-level">Avanzado</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>HTML5 / CSS3 / SCSS</span>
+                                <span class="skill-level">Experto</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Angular / Vue.js</span>
+                                <span class="skill-level">Intermedio</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">DevOps & Cloud</h3>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Azure / Cloud Services</span>
+                                <span class="skill-level">Avanzado</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span>Docker / CI/CD</span>
+                                <span class="skill-level">Intermedio</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Languages -->
+                <section class="section">
+                    <h2 class="section-title">Idiomas</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Catalán:</span>
+                            <span class="info-value"> Nativo</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Español:</span>
+                            <span class="info-value"> Avanzado</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Inglés:</span>
+                            <span class="info-value"> Intermedio</span>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Interests -->
+                <section class="section">
+                    <h2 class="section-title">Intereses</h2>
+                    <p style="font-size: 14px; color: #4b5563; line-height: 1.8;">
+                        Tecnologías emergentes • BTT • Running • Innovación digital • 
+                        Arquitectura de software • Open Source • Transformación digital
+                    </p>
+                </section>
+                
+                <!-- Philosophy -->
+                <div class="philosophy">
+                    <h3 class="philosophy-title">Filosofía de Innovación</h3>
+                    <p class="philosophy-text">
+                        "Transformando la complejidad en soluciones elegantes a través de la 
+                        profundidad estratégica y la visión innovadora. Cada desafío técnico 
+                        es una oportunidad para descubrir posibilidades ocultas."
+                    </p>
+                </div>
+            </aside>
+            
+            <!-- Main Content -->
+            <main class="main">
+                <!-- Professional Summary -->
+                <div class="summary">
+                    Desarrollador Full-Stack Senior con más de 17 años arquitectando soluciones 
+                    digitales transformadoras. Experto en ecosistemas DotNetNuke y plataformas 
+                    colaborativas, combinando profundidad estratégica con resolución innovadora 
+                    de problemas para descubrir oportunidades ocultas. Reconocido por convertir 
+                    desafíos complejos en soluciones elegantes y escalables a través del análisis 
+                    investigativo y liderazgo técnico.
+                </div>
+                
+                <!-- Experience -->
+                <section class="section">
+                    <h2 class="section-title">Experiencia Profesional</h2>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="position">Senior Developer & Technical Lead</h3>
+                            <p class="company">Disgrafic ITEC</p>
+                            <p class="period">Septiembre 2008 - Presente (17+ años) | Banyoles</p>
+                        </div>
+                        <ul class="achievements">
+                            <li>Lideré el desarrollo de más de 150 portales empresariales, transformando 
+                            requisitos complejos en arquitecturas escalables</li>
+                            <li>Arquitecté plataforma SaaS multi-tenant sirviendo a 10,000+ usuarios con 
+                            99.9% de disponibilidad</li>
+                            <li>Contribuí al core de DotNetNuke, mejorando el framework de localización 
+                            usado por miles de desarrolladores globalmente</li>
+                            <li>Pionero en la integración de frameworks modernos (React/Vue) con sistemas 
+                            legacy, reduciendo tiempos de desarrollo en 40%</li>
+                            <li>Mentoré a 15+ desarrolladores junior en patrones avanzados de .NET y 
+                            mejores prácticas de arquitectura</li>
+                            <li>Implementé pipelines CI/CD automatizados, reduciendo tiempo de despliegue 
+                            de 4 horas a 15 minutos</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <h3 class="position">Programador .NET</h3>
+                            <p class="company">PASIONA Informática</p>
+                            <p class="period">Junio 2007 - Julio 2008 | Barcelona</p>
+                        </div>
+                        <ul class="achievements">
+                            <li>Desarrollé aplicación crítica para Banc Sabadell manejando transacciones 
+                            por valor de millones de euros diarios</li>
+                            <li>Creé sistema de gestión y ventas para Intersport, optimizando procesos 
+                            de inventario en 20+ tiendas</li>
+                            <li>Implementé soluciones de alta seguridad cumpliendo estándares bancarios 
+                            PCI-DSS</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <!-- Key Projects -->
+                <section class="section">
+                    <h2 class="section-title">Proyectos Destacados</h2>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <h4 class="project-name">Portal Turístico Banyoles</h4>
+                            <p class="project-tech">DNN, React, Azure</p>
+                            <p class="project-description">
+                                Plataforma turística integral con 50K+ visitantes mensuales, 
+                                integrando reservas en tiempo real y contenido multiidioma.
+                            </p>
+                        </div>
+                        <div class="project-card">
+                            <h4 class="project-name">Sistema e-Commerce B2B</h4>
+                            <p class="project-tech">ASP.NET Core, Vue.js, SQL Server</p>
+                            <p class="project-description">
+                                Marketplace B2B procesando 1M€+ en transacciones mensuales 
+                                con integración ERP y logística automatizada.
+                            </p>
+                        </div>
+                        <div class="project-card">
+                            <h4 class="project-name">Wildlife Conservation Platform</h4>
+                            <p class="project-tech">DNN, Angular, API REST</p>
+                            <p class="project-description">
+                                Portal internacional para WCS Tanzania facilitando la gestión 
+                                de datos de conservación y colaboración científica.
+                            </p>
+                        </div>
+                        <div class="project-card">
+                            <h4 class="project-name">Framework de Temas DNN</h4>
+                            <p class="project-tech">Razor, SCSS, JavaScript</p>
+                            <p class="project-description">
+                                Framework propietario para desarrollo rápido de temas, 
+                                reduciendo tiempo de creación de 40 a 8 horas.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Education -->
+                <section class="section">
+                    <h2 class="section-title">Formación</h2>
+                    <div class="experience-item" style="padding-left: 0;">
+                        <div class="experience-header">
+                            <h3 class="position">Grado en Informática</h3>
+                            <p class="company">Universitat Autònoma de Barcelona (UAB)</p>
+                            <p class="period">2008</p>
+                        </div>
+                    </div>
+                    <div class="experience-item" style="padding-left: 0;">
+                        <div class="experience-header">
+                            <h3 class="position">Ciclo Superior en Desarrollo de Aplicaciones Informáticas</h3>
+                            <p class="company">IES Montilivi, Girona</p>
+                            <p class="period">2005</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Portfolio completo disponible en: fontalbert.github.io</p>
+        </footer>
+    </div>
+    
+    <!-- Segunda página - Anexo -->
+    <div class="container page-break" style="margin-top: 40px;">
+        <div style="padding: 40px;">
+            <h2 style="font-family: 'Montserrat', sans-serif; font-size: 28px; color: #1a1f3a; text-align: center; margin-bottom: 40px;">
+                Perfil de Innovación Personal
+            </h2>
+            
+            <!-- Compass Section -->
+            <div style="background: #f9fafb; padding: 30px; border-radius: 12px; margin-bottom: 30px;">
+                <h3 style="font-family: 'Montserrat', sans-serif; font-size: 20px; color: #1a1f3a; margin-bottom: 20px;">
+                    Brújula de Innovación Astrológica
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center;">
+                    <div>
+                        <svg width="200" height="200" viewBox="0 0 200 200" style="display: block; margin: 0 auto;">
+                            <!-- Círculo exterior -->
+                            <circle cx="100" cy="100" r="90" fill="none" stroke="#e5e7eb" stroke-width="2"/>
+                            <circle cx="100" cy="100" r="70" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+                            <circle cx="100" cy="100" r="50" fill="none" stroke="#e5e7eb" stroke-width="1"/>
+                            
+                            <!-- Líneas cardinales -->
+                            <line x1="100" y1="10" x2="100" y2="190" stroke="#6b46c1" stroke-width="1" opacity="0.3"/>
+                            <line x1="10" y1="100" x2="190" y2="100" stroke="#6b46c1" stroke-width="1" opacity="0.3"/>
+                            
+                            <!-- Puntos planetarios -->
+                            <circle cx="100" cy="40" r="8" fill="#6b46c1" opacity="0.8"/>
+                            <text x="100" y="45" text-anchor="middle" fill="white" font-size="10" font-weight="bold">☉</text>
+                            
+                            <circle cx="130" cy="60" r="6" fill="#8b5cf6" opacity="0.8"/>
+                            <text x="130" y="64" text-anchor="middle" fill="white" font-size="8">♅</text>
+                            
+                            <circle cx="70" cy="80" r="5" fill="#a78bfa" opacity="0.8"/>
+                            <circle cx="120" cy="120" r="5" fill="#a78bfa" opacity="0.8"/>
+                            <circle cx="80" cy="130" r="5" fill="#a78bfa" opacity="0.8"/>
+                            
+                            <!-- Centro -->
+                            <circle cx="100" cy="100" r="3" fill="#1a1f3a"/>
+                        </svg>
+                    </div>
+                    
+                    <div>
+                        <h4 style="font-weight: 600; color: #1a1f3a; margin-bottom: 15px;">
+                            Energías Clave (4 Nov 1979, 22:30)
+                        </h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="margin-bottom: 12px; display: flex; align-items: center;">
+                                <span style="color: #6b46c1; font-size: 20px; margin-right: 10px;">☉</span>
+                                <div>
+                                    <strong>Sol en Escorpio:</strong> Transformación profunda, 
+                                    investigación exhaustiva, liderazgo estratégico
+                                </div>
+                            </li>
+                            <li style="margin-bottom: 12px; display: flex; align-items: center;">
+                                <span style="color: #8b5cf6; font-size: 20px; margin-right: 10px;">♅</span>
+                                <div>
+                                    <strong>Urano en Escorpio:</strong> Innovación revolucionaria, 
+                                    soluciones disruptivas, visión tecnológica
+                                </div>
+                            </li>
+                            <li style="display: flex; align-items: center;">
+                                <span style="color: #a78bfa; font-size: 20px; margin-right: 10px;">◉</span>
+                                <div>
+                                    <strong>Energía combinada:</strong> Capacidad única para transformar 
+                                    sistemas complejos mediante innovación profunda
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Creative Journey -->
+            <div style="margin-bottom: 30px;">
+                <h3 style="font-family: 'Montserrat', sans-serif; font-size: 20px; color: #1a1f3a; margin-bottom: 20px;">
+                    Viaje Tecnológico Creativo
+                </h3>
+                
+                <div style="position: relative; padding-left: 30px;">
+                    <!-- Timeline line -->
+                    <div style="position: absolute; left: 10px; top: 10px; bottom: 10px; width: 2px; background: #e5e7eb;"></div>
+                    
+                    <!-- Timeline items -->
+                    <div style="margin-bottom: 25px; position: relative;">
+                        <div style="position: absolute; left: -25px; top: 5px; width: 12px; height: 12px; background: #6b46c1; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #6b46c1;"></div>
+                        <h4 style="font-weight: 600; color: #1a1f3a; margin-bottom: 5px;">2005-2008: Fundamentos</h4>
+                        <p style="color: #4b5563; font-size: 14px;">
+                            Construcción de base sólida en .NET y arquitectura de software, 
+                            descubriendo pasión por resolver problemas complejos
+                        </p>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px; position: relative;">
+                        <div style="position: absolute; left: -25px; top: 5px; width: 12px; height: 12px; background: #6b46c1; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #6b46c1;"></div>
+                        <h4 style="font-weight: 600; color: #1a1f3a; margin-bottom: 5px;">2008-2015: Especialización DNN</h4>
+                        <p style="color: #4b5563; font-size: 14px;">
+                            Dominio profundo de DotNetNuke, contribuciones open source, 
+                            desarrollo de framework propio de temas
+                        </p>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px; position: relative;">
+                        <div style="position: absolute; left: -25px; top: 5px; width: 12px; height: 12px; background: #6b46c1; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #6b46c1;"></div>
+                        <h4 style="font-weight: 600; color: #1a1f3a; margin-bottom: 5px;">2015-2020: Evolución Full Stack</h4>
+                        <p style="color: #4b5563; font-size: 14px;">
+                            Integración de tecnologías modernas (React, Vue, Angular) con 
+                            sistemas legacy, arquitecturas cloud
+                        </p>
+                    </div>
+                    
+                    <div style="position: relative;">
+                        <div style="position: absolute; left: -25px; top: 5px; width: 12px; height: 12px; background: #6b46c1; border-radius: 50%; border: 3px solid white; box-shadow: 0 0 0 2px #6b46c1;"></div>
+                        <h4 style="font-weight: 600; color: #1a1f3a; margin-bottom: 5px;">2020-Presente: Liderazgo Técnico</h4>
+                        <p style="color: #4b5563; font-size: 14px;">
+                            Mentoría, arquitectura de soluciones empresariales, innovación 
+                            en IA y automatización de procesos
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Holistic Approach -->
+            <div style="background: linear-gradient(135deg, #f9fafb 0%, #f3f4f6 100%); padding: 30px; border-radius: 12px;">
+                <h3 style="font-family: 'Montserrat', sans-serif; font-size: 20px; color: #1a1f3a; margin-bottom: 20px;">
+                    Enfoque Holístico
+                </h3>
+                
+                <p style="color: #4b5563; font-size: 15px; line-height: 1.8; margin-bottom: 15px;">
+                    Mi aproximación al desarrollo de software combina la precisión técnica con una 
+                    comprensión profunda de los patrones subyacentes. Así como las constelaciones 
+                    guían a los navegantes, los principios de diseño atemporales guían mis soluciones 
+                    técnicas.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 25px;">
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: #6b46c1; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: white; font-size: 24px;">
+                            ⚡
+                        </div>
+                        <h4 style="font-weight: 600; color: #1a1f3a; margin-bottom: 5px;">Transformación</h4>
+                        <p style="color: #6b7280; font-size: 13px;">
+                            Convirtiendo desafíos en oportunidades
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: #8b5cf6; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: white; font-size: 24px;">
+                            💡
+                        </div>
+                        <h4 style="font-weight: 600; color: #1a1f3a; margin-bottom: 5px;">Innovación</h4>
+                        <p style="color: #6b7280; font-size: 13px;">
+                            Soluciones creativas y disruptivas
+                        </p>
+                    </div>
+                    
+                    <div style="text-align: center;">
+                        <div style="width: 60px; height: 60px; background: #a78bfa; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: white; font-size: 24px;">
+                            🔍
+                        </div>
+                        <h4 style="font-weight: 600; color: #1a1f3a; margin-bottom: 5px;">Profundidad</h4>
+                        <p style="color: #6b7280; font-size: 13px;">
+                            Análisis exhaustivo y estratégico
+                        </p>
+                    </div>
+                </div>
+                
+                <p style="color: #4b5563; font-size: 14px; line-height: 1.7; margin-top: 25px; font-style: italic; text-align: center;">
+                    "La verdadera innovación surge cuando combinamos el conocimiento técnico profundo 
+                    con la visión transformadora, creando soluciones que no solo resuelven problemas, 
+                    sino que revelan nuevas posibilidades."
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
