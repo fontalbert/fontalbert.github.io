@@ -5,7 +5,7 @@ const Header = () => (
     <nav className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
       <span className="font-bold text-xl text-gray-800 flex items-center gap-2">
         <img src="/swallow-logo.webp" alt="Swallow Development" width="35" />
-        <span>Developer</span>
+        <span className="hidden sm:inline">Developer</span>
       </span>
       <ul className="flex gap-6 text-gray-700 font-medium">
         <li><a href="#inicio" className="hover:text-blue-600 transition-colors">Inicio</a></li>
