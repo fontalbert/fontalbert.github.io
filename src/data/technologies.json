@@ -26,19 +26,19 @@
     "items": [
       { "name": "SQL Server", "years": 16, "icon": "devicon-microsoftsqlserver-plain" },
       { "name": "PostgreSQL", "years": 2, "icon": "devicon-postgresql-plain" },
-      { "name": "Supabase", "years": 2, "icon": "devicon-supabase-plain" },
-      { "name": "MongoDB", "years": 2, "icon": "devicon-mongodb-plain" },
-      { "name": "Redis", "years": 1, "icon": "devicon-redis-plain" }
+      { "name": "Supabase", "years": null, "icon": "devicon-supabase-plain" },
+      { "name": "MongoDB", "years": null, "icon": "devicon-mongodb-plain" },
+      { "name": "Redis", "years": null, "icon": "devicon-redis-plain" }
     ]
   },
   "DevOps": {
     "icon": "/icons/devops.svg",
     "items": [
       { "name": "Git", "years": 9, "icon": "devicon-git-plain" },
-      { "name": "Azure Devops", "years": 2, "icon": "devicon-azure-plain" },
+      { "name": "Azure Devops", "years": 8, "icon": "devicon-azure-plain" },
       { "name": "TortoiseSVN", "years": 5, "icon": "devicon-tortoisegit-plain" },
-      { "name": "Docker", "years": 3, "icon": "devicon-docker-plain" },
-      { "name": "AWS", "years": 2, "icon": "devicon-amazonwebservices-plain" }
+      { "name": "Docker", "years": null, "icon": "devicon-docker-plain" },
+      { "name": "AWS", "years": null, "icon": "devicon-amazonwebservices-plain" }
       
     ]
   }

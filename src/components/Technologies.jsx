@@ -26,9 +26,10 @@ const Technologies = () => (
               >
                 <i className={`${tech.icon} text-2xl text-blue-700`}></i>
                 <span className="font-medium text-gray-800">{tech.name}</span>
+                {tech.years?
                 <span className="ml-auto text-xs text-blue-500">
                   {tech.years} años
-                </span>
+                </span>:null}
               </div>
             ))}
           </div>
