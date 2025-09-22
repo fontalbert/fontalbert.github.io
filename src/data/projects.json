@@ -28,5 +28,15 @@
       "project": ""
     },
     "featured": true
+  },
+  {
+    "title": "WCS Preventing Wildlife Crime",
+    "description": "Esta iniciativa evalúa casos de estudio sobre el tráfico de vida silvestre adaptando el marco EMMIE, una escala de calificación de evidencias, con el fin de ir más allá de las métricas de esfuerzo y evaluar el verdadero impacto de las intervenciones de prevención del delito.",
+    "image": "/images/proyectos/preventing_wildlife_crime.jpg",
+    "tags": ["HTML", "CSS", "Razor", "SQL-Server", "Bootstrap 5"],
+    "links": {
+      "project": "https://collaborations.wcs.org/snappwildlifecrime"
+    },
+    "featured": true
   }
 ] 
