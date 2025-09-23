@@ -49,7 +49,7 @@ export default function SwallowWire() {
       const progress = Math.min(scrollY / (maxScroll / 3), 1);
       // Calcula cuántos "pasos" de scroll se han hecho
       const steps = Math.ceil(progress * NUM_SCROLL_STEPS);
-      console.info("Scrolls number:", steps);
+      //console.info("Scrolls number:", steps);
       // Cuántas golondrinas deben volar en total
       const birdsToFly = Math.min(
         INITIAL_FLY_COUNT + Math.floor((steps / NUM_SCROLL_STEPS) * (NUM_SWALLOWS - INITIAL_FLY_COUNT)),
