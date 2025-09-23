@@ -3,7 +3,7 @@ import about from "../data/about.json";
 import SwallowWire from "./SwallowWire";
 
 const About = () => (
-  <section id="inicio" className="min-h-screen flex flex-col justify-center items-center bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-24 pb-12">
+  <section id="inicio" className="min-h-screen flex flex-col justify-center items-center  pt-24 pb-12">
     <img src={about.photo} alt={about.name} className="w-32 h-32 rounded-full shadow-lg mb-4 object-cover" />
     <h1 className="text-3xl font-bold text-gray-800 mb-1">{about.name}</h1>
     <h2 className="text-lg text-blue-700 font-medium mb-2">{about.role}</h2>
