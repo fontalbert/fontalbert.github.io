@@ -8,7 +8,7 @@ const About = () => {
   // Sustituye cualquier texto del tipo "[experienceYears]" por el valor calculado
   const dynamicRole = about.role.replace(
     /\[experienceYears\]/,
-    `+${experienceYears}`
+    `${experienceYears}`
   );
 
   return (
