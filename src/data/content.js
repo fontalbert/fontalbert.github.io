@@ -78,7 +78,7 @@ const content = {
     hero: {
       eyebrow: "Girona, España",
       titleA: "Albert Font",
-      titleB: "hace webs ",
+      titleB: "convierte problemas en soluciones ",
       titleEm: "ligeras",
       titleC: ".",
       description: `Desarrollador fullstack con más de ${years} años de experiencia. Claro, limpio y con personalidad: cada detalle tiene un propósito. La IA es mi herramienta principal de trabajo.`,
@@ -243,9 +243,9 @@ const content = {
     hero: {
       eyebrow: "Girona, Spain",
       titleA: "Albert Font",
-      titleB: "builds ",
+      titleB: "turns problems into ",
       titleEm: "light",
-      titleC: " websites.",
+      titleC: " solutions.",
       description: `Fullstack developer with over ${years} years of experience. Clear, clean and with personality: every detail has a purpose. AI is my main working tool.`,
       ctaProjects: "View projects",
       ctaCv: "Download CV",

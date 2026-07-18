@@ -25,7 +25,10 @@ export default function Hero() {
       </Reveal>
       <h1 className="text-[clamp(56px,9.5vw,130px)] font-extrabold tracking-[-0.045em] leading-[0.95] m-0 mb-7">
         <Reveal className="block">{h.titleA}</Reveal>
-        <Reveal className="block font-light tracking-[-0.03em]" delay={0.1}>
+        <Reveal
+          className="block font-light tracking-[-0.03em] text-[clamp(30px,4.6vw,64px)] leading-[1.15] mt-2"
+          delay={0.1}
+        >
           {h.titleB}
           <em className="italic font-normal">{h.titleEm}</em>
           {h.titleC}
