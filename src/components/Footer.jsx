@@ -1,9 +1,16 @@
 import React from "react";
+import { useLang } from "../lib/contexts";
 
-const Footer = () => (
-  <footer className="text-center text-gray-400 text-sm py-8 bg-transparent">
-    © {new Date().getFullYear()} Albert Font Sala. Todos los derechos reservados.
-  </footer>
-);
+const Footer = () => {
+  const { t } = useLang();
+  return (
+    <footer className="text-center px-6 pt-10 pb-[34px] text-[12.5px] opacity-55">
+      © {new Date().getFullYear()} Albert Font Sala — {t.footer.handmade} ·{" "}
+      <a href="#inicio" className="border-b border-current hover:opacity-70 transition-opacity">
+        {t.footer.backToTop}
+      </a>
+    </footer>
+  );
+};
 
-export default Footer; 
+export default Footer;

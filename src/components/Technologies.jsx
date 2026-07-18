@@ -1,71 +1,87 @@
 import React from "react";
-import technologies from "../data/technologies.json";
+import Reveal from "./Reveal";
+import SunPhase from "./SunPhase";
+import { useLang } from "../lib/contexts";
 
-const Technologies = () => (
-  <section
-    id="tecnologias"
-    className="max-w-6xl mx-auto py-20 px-4"
-  >
-    <h2 className="text-3xl font-bold text-gray-800 mb-10 text-center">
-      Tecnologías y Áreas de Especialización
-    </h2>
+const MAX_CELLS = 18;
 
-    {/* Destacado: IA como herramienta principal */}
-    <div className="bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl shadow-lg p-6 md:p-8 mb-10 text-white">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h3 className="text-2xl font-bold flex items-center gap-2">
-            <span aria-hidden="true">✦</span>
-            {technologies.destacado.title}
+// Cuadrícula de la Opción B: 1 celda = 1 año de experiencia
+function YearCells({ years, recentLabel }) {
+  if (years == null) {
+    return <span className="text-[12px] italic opacity-50 whitespace-nowrap">{recentLabel}</span>;
+  }
+  return (
+    <span className="flex gap-[3px] flex-wrap" aria-hidden="true">
+      {Array.from({ length: MAX_CELLS }, (_, i) => (
+        <span
+          key={i}
+          className="w-[9px] h-[9px] rounded-[2px] border border-current box-border shrink-0"
+          style={{
+            background: i < years ? "currentColor" : "transparent",
+            opacity: i < years ? 0.8 : 0.22,
+          }}
+        />
+      ))}
+    </span>
+  );
+}
+
+export default function Technologies() {
+  const { t } = useLang();
+  const tech = t.tech;
+  const ia = t.ia;
+  return (
+    <section id="tecnologias" className="max-w-[1060px] mx-auto px-6 pt-[140px] pb-[60px] box-border">
+      <SunPhase phase={2} title={tech.title} />
+
+      {/* Destacado IA */}
+      <Reveal className="border-[1.5px] border-current rounded-[26px] p-[clamp(28px,4vw,48px)] mb-16 relative overflow-hidden">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <h3 className="m-0 text-[clamp(30px,4vw,46px)] font-extrabold tracking-[-0.03em] leading-[1.05]">
+            {ia.titleA}
+            <span className="font-light">{ia.titleB}</span>
           </h3>
-          <p className="text-blue-100 font-medium mt-1">
-            {technologies.destacado.subtitle}
-          </p>
-          <p className="text-blue-50 mt-2 max-w-2xl">
-            {technologies.destacado.description}
-          </p>
-        </div>
-        <div className="flex flex-wrap md:flex-col gap-2 md:items-end shrink-0">
-          {technologies.destacado.items.map((item) => (
-            <span
-              key={item}
-              className="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-sm font-medium whitespace-nowrap"
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div>
-    </div>
-
-    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-      {Object.entries(technologies.categorias).map(([category, data]) => (
-        <div
-          key={category}
-          className="bg-white rounded-2xl shadow-md p-6 flex flex-col items-center hover:scale-105 transition-transform"
-        >
-          <h3 className="text-xl font-bold text-blue-700 mb-4 text-center">
-            {category}
-          </h3>
-          <div className="grid gap-3 w-full">
-            {data.items.map((tech) => (
-              <div
-                key={tech.name}
-                className="flex items-center gap-3 bg-blue-50 rounded-lg px-3 py-2 hover:bg-blue-100 transition"
-              >
-                {tech.icon && <i className={`${tech.icon} text-2xl text-blue-700`}></i>}
-                <span className="font-medium text-gray-800">{tech.name}</span>
-                {tech.years?
-                <span className="ml-auto text-xs text-blue-500">
-                  {tech.years} {tech.years === 1 ? "año" : "años"}
-                </span>:null}
-              </div>
-            ))}
+          <div>
+            <p className="m-0 mb-[18px] leading-[1.65] opacity-[0.78] [text-wrap:pretty]">{ia.description}</p>
+            <div className="flex flex-wrap gap-[9px]">
+              {ia.pills.map((pill) => (
+                <span
+                  key={pill}
+                  className="border-[1.5px] border-current opacity-85 px-4 py-[7px] rounded-full text-[13.5px] font-medium"
+                >
+                  {pill}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
-      ))}
-    </div>
-  </section>
-);
+      </Reveal>
 
-export default Technologies;
+      <p className="text-[12px] tracking-[0.18em] uppercase opacity-45 mb-8">{tech.cellsNote}</p>
+
+      <div className="grid md:grid-cols-2 gap-y-12 gap-x-[clamp(40px,6vw,90px)]">
+        {tech.categories.map((cat) => (
+          <Reveal key={cat.name}>
+            <h4 className="m-0 mb-5 text-[13px] tracking-[0.2em] uppercase opacity-55 font-semibold">
+              {cat.name}
+            </h4>
+            <div className="flex flex-col">
+              {cat.items.map(([name, years]) => (
+                <div
+                  key={name}
+                  className="grid grid-cols-[minmax(96px,120px)_1fr_auto] items-center gap-3.5 py-[11px] border-b border-[rgba(128,128,128,0.25)]"
+                >
+                  <span className="text-[16px] font-semibold tracking-[-0.01em]">{name}</span>
+                  <YearCells years={years} recentLabel={tech.recent} />
+                  <span className="text-[13px] opacity-60 tabular-nums whitespace-nowrap text-right">
+                    {years == null ? "—" : tech.yearLabel(years)}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}

@@ -6,7 +6,17 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Aleteo de las golondrinas al emprender el vuelo (Swallow.jsx) */
+body {
+  font-family: "Albert Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #232936;
+  color: #fdfbf7;
+}
+
+/* Aleteo de las golondrinas (Swallow.jsx, pose de vuelo) */
 .swallow-wing-near {
   animation: swallow-flap var(--flap, 0.2s) ease-in-out infinite alternate;
 }

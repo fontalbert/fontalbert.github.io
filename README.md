@@ -2,13 +2,19 @@
 
 Portfolio personal de Albert Font Sala, desarrollador fullstack (React · Node.js · C#).
 
+## Diseño
+
+"Murmuración": la página es un día entero — el cielo cambia con el scroll de alba a noche,
+con una murmuración de golondrinas viva de fondo (canvas 2D con flocking que huye del cursor).
+Juego escondido: doble clic en el cielo crea un cable donde se posan las golondrinas.
+
 ## Stack
 
 - **React 19** + **Vite 7**
 - **Tailwind CSS** para los estilos
-- **Three.js** — fondo animado de pájaros con simulación de *flocking*
-- **Framer Motion** — golondrinas animadas sobre un cable
-- Contenido separado en JSON (`src/data/`) para editar textos sin tocar componentes
+- **Framer Motion** — apariciones al hacer scroll
+- **Canvas 2D** — murmuración de golondrinas (sin librerías 3D)
+- **Bilingüe ES/EN** — todo el contenido en `src/data/content.js`, selector en el nav
 
 ## Desarrollo
 
