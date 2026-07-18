@@ -1,4 +1,11 @@
 {
+  "destacado": {
+    "title": "Inteligencia Artificial",
+    "subtitle": "Mi herramienta principal desde hace 1 año",
+    "description": "Integro la IA generativa en todo mi flujo de trabajo diario: desarrollo asistido, revisión de código y automatización.",
+    "items": ["Desarrollo asistido por IA", "IA Generativa", "Automatización con agentes"]
+  },
+  "categorias": {
   "Frontend": {
     "icon": "/icons/frontend.svg",
     "items": [
@@ -15,9 +22,9 @@
     "icon": "/icons/backend.svg",
     "items": [
       { "name": "C#", "years": 17, "icon": "devicon-csharp-plain" },
-      { "name": "ASP.NET", "years": 16, "icon": "devicon-dotnetcore-plain" },
-      { "name": "DotnetNuke", "years": 15, "icon": "devicon-nomad-plain" },
-      { "name": "ASP MVC", "years": 8, "icon": "devicon-redis-plain" },
+      { "name": "ASP.NET", "years": 16, "icon": "devicon-dot-net-plain" },
+      { "name": "DotnetNuke", "years": 15, "icon": "devicon-dot-net-plain" },
+      { "name": "ASP MVC", "years": 8, "icon": "devicon-dotnetcore-plain" },
       { "name": "Node.js", "years": 6, "icon": "devicon-nodejs-plain" }
     ]
   },
@@ -36,10 +43,11 @@
     "items": [
       { "name": "Git", "years": 9, "icon": "devicon-git-plain" },
       { "name": "Azure Devops", "years": 8, "icon": "devicon-azure-plain" },
-      { "name": "TortoiseSVN", "years": 5, "icon": "devicon-tortoisegit-plain" },
+      { "name": "TortoiseSVN", "years": 5, "icon": "devicon-subversion-plain" },
       { "name": "Docker", "years": null, "icon": "devicon-docker-plain" },
       { "name": "AWS", "years": null, "icon": "devicon-amazonwebservices-plain" }
-      
+
     ]
+  }
   }
 } 

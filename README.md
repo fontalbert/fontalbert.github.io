@@ -1,5 +1,24 @@
-# [Albert Font --Developer and Crypto Curious--](https://fontalbert.github.io)
+# [Albert Font · Portfolio](https://fontalbert.github.io)
 
-Esta es mi página web donde encontrarás consejos y código de desarrollo que utilizo normalmente y que me son útiles para mi. Si quieres también puedes darle un vistazo :relaxed:
+Portfolio personal de Albert Font Sala, desarrollador fullstack (React · Node.js · C#).
 
-Mi deseo es poder utilizar esta web como punto donde apoyarme para encontar todo lo que mas utilizo y me ayuda a mi trabajo y mi hobby (micro inversiones en cripto). Por eso he creado dos espacios diferenciados, **DEV** :abacus: y **CRYPTO** :rocket:.
+## Stack
+
+- **React 19** + **Vite 7**
+- **Tailwind CSS** para los estilos
+- **Three.js** — fondo animado de pájaros con simulación de *flocking*
+- **Framer Motion** — golondrinas animadas sobre un cable
+- Contenido separado en JSON (`src/data/`) para editar textos sin tocar componentes
+
+## Desarrollo
+
+```bash
+npm install
+npm run dev      # servidor de desarrollo
+npm run build    # build de producción en dist/
+npm run preview  # previsualizar el build
+```
+
+## Despliegue
+
+Cada push a `main` lanza el workflow de GitHub Actions que hace el build y publica en GitHub Pages automáticamente.

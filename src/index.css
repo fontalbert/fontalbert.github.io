@@ -1,8 +1,24 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities; 
+@tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
 
-.from-blue-50 {
---tw-gradient-from: #bedaff var(--tw-gradient-from-position);
+/* Aleteo de las golondrinas al emprender el vuelo (Swallow.jsx) */
+.swallow-wing-near {
+  animation: swallow-flap var(--flap, 0.2s) ease-in-out infinite alternate;
+}
+.swallow-wing-far {
+  animation: swallow-flap-far var(--flap, 0.2s) ease-in-out infinite alternate;
+  animation-delay: 0.04s;
+}
+@keyframes swallow-flap {
+  from { transform: rotate(32deg); }
+  to { transform: rotate(-34deg); }
+}
+@keyframes swallow-flap-far {
+  from { transform: rotate(24deg); }
+  to { transform: rotate(-26deg); }
 }

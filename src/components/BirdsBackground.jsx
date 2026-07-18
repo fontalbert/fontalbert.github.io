@@ -16,6 +16,7 @@ const BirdsBackground = () => {
     camera.position.set(0, 0, 500);
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setClearColor(0x000000, 0); // Fondo transparente
     if (mountRef.current) {
@@ -23,46 +24,71 @@ const BirdsBackground = () => {
     }
 
     // --- Parámetros de la simulación ---
-    const BIRDS = 300; // Reduce a 500 si es lento en móvil
+    // Menos pájaros en móvil: el flocking es O(n²) y en pantallas pequeñas no se aprecian tantos
+    const BIRDS = window.innerWidth < 768 ? 40 : 90;
     const BOUNDS = 800; // Tamaño del mundo de vuelo
     const BOUNDS_HALF = BOUNDS / 2;
 
-    // --- Crear la geometría base de UN pájaro ---
+    // --- Crear la geometría base de UN pájaro (silueta de golondrina) ---
     const createBirdGeometry = () => {
       const geometry = new THREE.BufferGeometry();
 
       // Vértices: [x, y, z] - El ave mira hacia +Z. Las alas se mueven en el eje Y.
       const vertices = new Float32Array([
-        // Cuerpo (triángulo central)
-        0, 0, 0,      // Punta del pico
-        -0.2, 0, -0.4, // Ala izquierda (base)
-        0.2, 0, -0.4,  // Ala derecha (base)
+        // Cuerpo
+        0.0, 0.0, 0.95,     // 0: punta del pico
+        -0.12, 0.0, 0.35,   // 1: cabeza izquierda
+        0.12, 0.0, 0.35,    // 2: cabeza derecha
+        0.0, -0.16, 0.25,   // 3: quilla (vientre, da volumen 3D)
+        0.0, 0.02, -0.3,    // 4: base de la cola
 
-        // Ala izquierda
-        -0.2, 0, -0.4, // Base (compartido)
-        -0.6, 0, -0.4, // Punta del ala
-        -0.4, 0, -0.8, // Extremo trasero
+        // Ala izquierda (en falç: borde de ataque adelantado, punta atrasada)
+        -0.12, 0.0, 0.3,    // 5: hombro
+        -0.68, 0.0, 0.18,   // 6: mitad del borde de ataque
+        -1.25, 0.05, -0.45, // 7: punta del ala
+        -0.48, 0.0, -0.2,   // 8: borde de salida (medio)
+        -0.14, 0.0, -0.05,  // 9: borde de salida (raíz)
 
-        // Ala derecha
-        0.2, 0, -0.4,  // Base (compartido)
-        0.6, 0, -0.4,  // Punta del ala
-        0.4, 0, -0.8,  // Extremo trasero
+        // Ala derecha (espejo)
+        0.12, 0.0, 0.3,     // 10: hombro
+        0.68, 0.0, 0.18,    // 11: mitad del borde de ataque
+        1.25, 0.05, -0.45,  // 12: punta del ala
+        0.48, 0.0, -0.2,    // 13: borde de salida (medio)
+        0.14, 0.0, -0.05,   // 14: borde de salida (raíz)
 
-        // Cola
-        -0.15, 0, -0.4, // Izquierda
-        0.15, 0, -0.4,  // Derecha
-        0, 0, -0.8,     // Punta
+        // Cola forcada
+        -0.1, 0.0, -0.28,   // 15: raíz izquierda
+        0.1, 0.0, -0.28,    // 16: raíz derecha
+        0.0, 0.0, -0.6,     // 17: horquilla central
+        -0.38, 0.0, -1.0,   // 18: punta izquierda
+        0.38, 0.0, -1.0,    // 19: punta derecha
       ]);
 
       // Índices para formar triángulos
       const indices = [
-        0, 1, 2,  // Cuerpo
-        3, 4, 5,  // Ala izquierda
-        6, 7, 8,  // Ala derecha
-        9, 10, 11 // Cola
+        // Cuerpo (superficie superior)
+        0, 1, 2,
+        1, 4, 2,
+        // Quilla (vientre)
+        0, 1, 3,
+        0, 3, 2,
+        1, 4, 3,
+        3, 4, 2,
+        // Ala izquierda
+        5, 6, 9,
+        9, 6, 8,
+        8, 6, 7,
+        // Ala derecha
+        10, 14, 11,
+        14, 13, 11,
+        13, 12, 11,
+        // Cola
+        15, 17, 16,
+        15, 18, 17,
+        16, 17, 19,
       ];
 
-      geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 4));
+      geometry.setAttribute('position', new THREE.BufferAttribute(vertices, 3));
       geometry.setIndex(indices);
       geometry.computeVertexNormals();
 
@@ -75,27 +101,37 @@ const BirdsBackground = () => {
     const vertexShader = `
         attribute float birdPhase;
         uniform float time;
+        varying float vShade;
 
         void main() {
         vec3 pos = position;
+        float flap = sin(time * 6.0 + birdPhase);
 
-        // Animar alas: identificamos vértices de alas por su coordenada X
-        if (position.x < -0.3 || position.x > 0.3) {
-            // Movemos en Y con una onda seno, usando la fase única del pájaro
-            pos.y += sin(time * 3.0 + birdPhase) * 0.15;
-        }
+        // Aleteo progresivo: la punta del ala sube/baja mucho más que la base
+        float wing = smoothstep(0.12, 1.25, abs(position.x));
+        pos.y += flap * wing * wing * 0.5;
 
-        // Aplicamos la matriz de transformación de la instancia (posición, rotación, escala)
-        // instanceMatrix se inyecta automáticamente por Three.js, ¡no la declares tú!
-        vec4 mvPosition = instanceMatrix * vec4(pos, 1.0);
+        // La cola compensa ligeramente el aleteo
+        pos.y -= flap * smoothstep(-0.3, -1.0, position.z) * 0.06;
+
+        // instanceMatrix se inyecta automáticamente por Three.js;
+        // modelViewMatrix aplica la cámara (sin ella el vaivén de cámara no se ve)
+        vec4 mvPosition = modelViewMatrix * instanceMatrix * vec4(pos, 1.0);
+
+        // Sombreado suave según la orientación del pájaro (da volumen al virar)
+        vec3 n = normalize(mat3(modelViewMatrix) * mat3(instanceMatrix) * normal);
+        vShade = 0.65 + 0.35 * abs(dot(n, normalize(vec3(0.3, 0.8, 0.5))));
+
         gl_Position = projectionMatrix * mvPosition;
         }
     `;
 
     const fragmentShader = `
+      varying float vShade;
+
       void main() {
-        // Color gris suave, similar a tu web actual (#4a5568)
-        gl_FragColor = vec4(0.29, 0.33, 0.4, 0.9);
+        // Gris azulado suave, similar a tu web actual (#4a5568), con sombreado
+        gl_FragColor = vec4(vec3(0.29, 0.33, 0.4) * vShade, 0.9);
       }
     `;
 
@@ -117,6 +153,7 @@ const BirdsBackground = () => {
     const positions = new Float32Array(BIRDS * 3);
     const velocities = new Float32Array(BIRDS * 3);
     const birdPhases = new Float32Array(BIRDS); // Fase de aleteo única por pájaro
+    const birdScales = new Float32Array(BIRDS); // Tamaño propio de cada pájaro
 
     for (let i = 0; i < BIRDS; i++) {
       positions[i * 3] = Math.random() * BOUNDS - BOUNDS_HALF;
@@ -128,6 +165,7 @@ const BirdsBackground = () => {
       velocities[i * 3 + 2] = Math.random() * 2 - 1;
 
       birdPhases[i] = Math.random() * Math.PI * 2; // Fase aleatoria para el aleteo
+      birdScales[i] = 1.4 + Math.random() * 1.4; // Variedad de tamaños
     }
 
     // Añadimos el atributo 'birdPhase' a la geometría
@@ -135,8 +173,10 @@ const BirdsBackground = () => {
 
     // Usamos un objeto dummy para calcular matrices de transformación
     const dummy = new THREE.Object3D();
+    const dir = new THREE.Vector3(); // Reutilizado en cada frame (evita crear 300 vectores/frame)
 
     // --- Bucle de Animación ---
+    let rafId;
     const animate = () => {
       const time = Date.now() * 0.001; // Tiempo en segundos
       birdMaterial.uniforms.time.value = time;
@@ -145,9 +185,10 @@ const BirdsBackground = () => {
         const i3 = i * 3;
 
         // --- Reglas de Flocking (Simplificadas) ---
-
-        // Cohesión
+        // Un solo bucle de vecinos: cohesión, separación y alineación
+        // comparten el cálculo de distancia (antes se hacía 3 veces por par)
         let centerX = 0, centerY = 0, centerZ = 0;
+        let avgVelX = 0, avgVelY = 0, avgVelZ = 0;
         let count = 0;
         for (let j = 0; j < BIRDS; j++) {
           if (j === i) continue;
@@ -155,62 +196,35 @@ const BirdsBackground = () => {
           const dx = positions[j3] - positions[i3];
           const dy = positions[j3 + 1] - positions[i3 + 1];
           const dz = positions[j3 + 2] - positions[i3 + 2];
-          const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-          if (distance < 40) {
-            centerX += positions[j3];
-            centerY += positions[j3 + 1];
-            centerZ += positions[j3 + 2];
-            count++;
-          }
-        }
-        if (count > 0) {
-          centerX /= count;
-          centerY /= count;
-          centerZ /= count;
-          velocities[i3] += (centerX - positions[i3]) * 0.0005;
-          velocities[i3 + 1] += (centerY - positions[i3 + 1]) * 0.0005;
-          velocities[i3 + 2] += (centerZ - positions[i3 + 2]) * 0.0005;
-        }
+          const distSq = dx * dx + dy * dy + dz * dz;
 
-        // Separación
-        for (let j = 0; j < BIRDS; j++) {
-          if (j === i) continue;
-          const j3 = j * 3;
-          const dx = positions[j3] - positions[i3];
-          const dy = positions[j3 + 1] - positions[i3 + 1];
-          const dz = positions[j3 + 2] - positions[i3 + 2];
-          const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-          if (distance < 20) {
+          // Separación (radio 20)
+          if (distSq < 400) {
             velocities[i3] -= dx * 0.0005;
             velocities[i3 + 1] -= dy * 0.0005;
             velocities[i3 + 2] -= dz * 0.0005;
           }
-        }
 
-        // Regla 3: Alineación (copiar la dirección de los vecinos)
-        let avgVelX = 0, avgVelY = 0, avgVelZ = 0;
-        let alignCount = 0;
-        for (let j = 0; j < BIRDS; j++) {
-        if (j === i) continue;
-        const j3 = j * 3;
-        const dx = positions[j3] - positions[i3];
-        const dy = positions[j3 + 1] - positions[i3 + 1];
-        const dz = positions[j3 + 2] - positions[i3 + 2];
-        const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
-        if (distance < 40) { // 👈 Usa el mismo radio que cohesión, o uno diferente
+          // Cohesión + Alineación (radio 40)
+          if (distSq < 1600) {
+            centerX += positions[j3];
+            centerY += positions[j3 + 1];
+            centerZ += positions[j3 + 2];
             avgVelX += velocities[j3];
             avgVelY += velocities[j3 + 1];
             avgVelZ += velocities[j3 + 2];
-            alignCount++;
+            count++;
+          }
         }
-        }
-        if (alignCount > 0) {
-        avgVelX /= alignCount;
-        avgVelY /= alignCount;
-        avgVelZ /= alignCount;
-        velocities[i3] += (avgVelX - velocities[i3]) * 0.01; // 👈 FACTOR DE ALINEACIÓN
-        velocities[i3 + 1] += (avgVelY - velocities[i3 + 1]) * 0.01;
-        velocities[i3 + 2] += (avgVelZ - velocities[i3 + 2]) * 0.01;
+        if (count > 0) {
+          // Cohesión: acercarse al centro de los vecinos
+          velocities[i3] += (centerX / count - positions[i3]) * 0.0005;
+          velocities[i3 + 1] += (centerY / count - positions[i3 + 1]) * 0.0005;
+          velocities[i3 + 2] += (centerZ / count - positions[i3 + 2]) * 0.0005;
+          // Alineación: copiar la dirección media de los vecinos
+          velocities[i3] += (avgVelX / count - velocities[i3]) * 0.01;
+          velocities[i3 + 1] += (avgVelY / count - velocities[i3 + 1]) * 0.01;
+          velocities[i3 + 2] += (avgVelZ / count - velocities[i3 + 2]) * 0.01;
         }
 
         // Limitar velocidad
@@ -236,7 +250,7 @@ const BirdsBackground = () => {
         dummy.position.set(positions[i3], positions[i3 + 1], positions[i3 + 2]);
 
         // Orientar el pájaro hacia su dirección de vuelo
-        const dir = new THREE.Vector3(velocities[i3], velocities[i3 + 1], velocities[i3 + 2]);
+        dir.set(velocities[i3], velocities[i3 + 1], velocities[i3 + 2]);
         if (dir.length() > 0.1) {
           dummy.lookAt(
             dummy.position.x + dir.x,
@@ -245,8 +259,8 @@ const BirdsBackground = () => {
           );
         }
 
-        // Escalar el pájaro (opcional, para variedad)
-        const scale = 1 + Math.sin(time + birdPhases[i]) * 0.1;
+        // Tamaño propio de cada pájaro (fijo: latir de tamaño resulta antinatural)
+        const scale = birdScales[i];
         dummy.scale.set(scale, scale, scale);
 
         birds.setMatrixAt(i, dummy.matrix);
@@ -260,7 +274,7 @@ const BirdsBackground = () => {
       camera.lookAt(0, 0, 0);
 
       renderer.render(scene, camera);
-      requestAnimationFrame(animate);
+      rafId = requestAnimationFrame(animate);
     };
 
     animate();
@@ -274,10 +288,12 @@ const BirdsBackground = () => {
     window.addEventListener("resize", handleResize);
 
     // --- Cleanup ---
+    const mountEl = mountRef.current;
     return () => {
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", handleResize);
-      if (mountRef.current && renderer.domElement) {
-        mountRef.current.removeChild(renderer.domElement);
+      if (mountEl && renderer.domElement.parentNode === mountEl) {
+        mountEl.removeChild(renderer.domElement);
       }
       renderer.dispose();
       birdGeometry.dispose();

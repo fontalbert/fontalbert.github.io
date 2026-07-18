@@ -14,7 +14,7 @@ const About = () => {
   return (
     <section
       id="inicio"
-      className="min-h-screen flex flex-col justify-center items-center  pt-24 pb-12"
+      className="min-h-screen flex flex-col justify-center items-center px-6 pt-24 pb-12"
     >
       <img
         src={about.photo}
@@ -65,22 +65,17 @@ const About = () => {
           Descargar CV
         </a>
         <div className="text-gray-500 text-sm mt-2 text-center">
-          <span className="block">
-            <i className="mr-1"></i>
-            {about.email}
-          </span>
-          <span className="block">
-            <i className="mr-1"></i>
-            {about.location}
-          </span>
-          <span className="block">
-            <i className="mr-1"></i>
-            {about.birthday}
-          </span>
-          <span className="block">
-            <i className="mr-1"></i>
-            {about.phone}
-          </span>
+          {about.email && (
+            <a href={`mailto:${about.email}`} className="block hover:text-blue-700 transition-colors">
+              {about.email}
+            </a>
+          )}
+          {about.location && <span className="block">{about.location}</span>}
+          {about.phone && (
+            <a href={`tel:${about.phone}`} className="block hover:text-blue-700 transition-colors">
+              {about.phone}
+            </a>
+          )}
         </div>
       </div>
       <SwallowWire />
