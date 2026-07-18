@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="alba" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2e0d8"/>
+      <stop offset="0.55" stop-color="#f6e2c4"/>
+      <stop offset="1" stop-color="#fdfbf7"/>
+    </linearGradient>
+  </defs>
+  <!-- Cielo del alba -->
+  <rect width="64" height="64" rx="14" fill="url(#alba)"/>
+  <!-- "A" en forma de analema: bucle de verano como vértice, piernas abiertas como bucle de invierno -->
+  <g fill="none" stroke="#232936" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 55 C 22 40, 28 26, 31.4 19.2 C 33.5 14, 36.5 10.5, 39 12 C 41.5 13.5, 41 17.2, 38 18.6 C 35.6 19.7, 33.8 19.6, 32.6 19.2 C 35.6 27, 41.5 41, 48 55"/>
+    <path d="M23.5 41 Q 32.5 44.5, 41.5 41" opacity="0.75"/>
+  </g>
+  <!-- El sol de noviembre, bajo en la pierna derecha -->
+  <circle cx="44.6" cy="47" r="6" fill="#e0a755"/>
+</svg>
