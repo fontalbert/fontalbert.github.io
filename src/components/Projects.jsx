@@ -16,7 +16,7 @@ export default function Projects() {
             <img
               src={project.image}
               alt={project.title}
-              className="block w-full max-w-full h-[clamp(240px,30vw,400px)] object-cover object-top grayscale contrast-[1.02] transition-[filter,transform] duration-700 hover:grayscale-0 hover:scale-[1.025]"
+              className="block w-full max-w-full h-[clamp(240px,30vw,400px)] object-contain grayscale contrast-[1.02] transition-[filter,transform] duration-700 hover:grayscale-0 hover:scale-[1.025]"
             />
           ) : (
             <span
@@ -26,7 +26,9 @@ export default function Projects() {
                   "repeating-linear-gradient(-45deg, rgba(128,128,128,0.22) 0 1px, transparent 1px 14px)",
               }}
             >
-              <span className="italic text-[19px] opacity-65 px-4 text-center">{p.internalUse}</span>
+              <span className="italic text-[19px] opacity-65 px-4 text-center">
+                {project.url ? p.comingSoon : p.internalUse}
+              </span>
             </span>
           );
           return (
@@ -36,7 +38,7 @@ export default function Projects() {
                   imgFirst ? "" : "md:[direction:rtl]"
                 }`}
               >
-                <div className="md:[direction:ltr] min-w-0 border-[1.5px] border-current rounded-[22px] overflow-hidden">
+                <div className="md:[direction:ltr] min-w-0 border-[1.5px] border-current rounded-[22px] overflow-hidden bg-[#f5f2ee]">
                   {project.url ? (
                     <a href={project.url} target="_blank" rel="noopener noreferrer" className="block">
                       {media}

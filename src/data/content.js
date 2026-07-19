@@ -47,7 +47,7 @@ const PROJECT_META = [
     tagLine: "Razor · MVC · SQL Server · SSO · Bootstrap",
   },
   {
-    image: null,
+    image: "/images/proyectos/dialisis_app.jpg",
     url: "",
     tagLine: "React · TypeScript · PostgreSQL · Supabase · Vercel",
   },
@@ -55,6 +55,16 @@ const PROJECT_META = [
     image: "/images/proyectos/preventing_wildlife_crime.jpg",
     url: "https://collaborations.wcs.org/snappwildlifecrime",
     tagLine: "HTML · CSS · Razor · SQL Server · Bootstrap 5",
+  },
+  {
+    image: "/images/proyectos/trainmovementapp.jpg",
+    url: "https://www.trainmovementapp.com",
+    tagLine: "React · Firebase · Stripe · Tailwind CSS · Vite",
+  },
+  {
+    image: "/images/proyectos/mak21.jpg",
+    url: "https://mak21.com/",
+    tagLine: "WordPress · Web Design · HTML · CSS",
   },
 ];
 
@@ -177,18 +187,19 @@ const content = {
       title: "Proyectos",
       viewProject: "Ver proyecto",
       internalUse: "Uso interno — Clínica Girona",
+      comingSoon: "Capturas próximamente",
       items: [
         {
-          ...PROJECT_META[0],
-          title: "WCS Impact Map",
+          ...PROJECT_META[4],
+          title: "Train Movement",
           description:
-            "Mapa interactivo del estado de las áreas biológicas protegidas del planeta, para Wildlife Conservation Society.",
+            "Plataforma SaaS de fitness desarrollada de principio a fin en solitario: los coaches gestionan clientes, planes de entrenamiento y nutrición; los usuarios siguen su progreso desde una PWA instalable.",
         },
         {
-          ...PROJECT_META[1],
-          title: "UdG Voluntariat",
+          ...PROJECT_META[5],
+          title: "MAK21",
           description:
-            "Plataforma completa de voluntariado para estudiantes de la Universitat de Girona.",
+            "Rediseño completo del sitio corporativo de MAK21, distribuidor B2B de tecnología: nueva arquitectura de la información, diseño responsive moderno e implementación en WordPress.",
         },
         {
           ...PROJECT_META[2],
@@ -197,10 +208,22 @@ const content = {
             "Gestión diaria de pacientes de diálisis para la Clínica Girona.",
         },
         {
+          ...PROJECT_META[0],
+          title: "WCS Impact Map",
+          description:
+            "Mapa interactivo del estado de las áreas biológicas protegidas del planeta, para Wildlife Conservation Society.",
+        },
+        {
           ...PROJECT_META[3],
           title: "Preventing Wildlife Crime",
           description:
             "Evaluación del impacto real de las intervenciones contra el tráfico de vida silvestre (marco EMMIE).",
+        },
+        {
+          ...PROJECT_META[1],
+          title: "UdG Voluntariat",
+          description:
+            "Plataforma completa de voluntariado para estudiantes de la Universitat de Girona.",
         },
       ],
     },
@@ -221,6 +244,7 @@ const content = {
     game: {
       score: "Golondrinas posadas",
       best: "Récord",
+      wires: "Cables",
     },
   },
 
@@ -342,18 +366,19 @@ const content = {
       title: "Projects",
       viewProject: "View project",
       internalUse: "Internal use — Clínica Girona",
+      comingSoon: "Screenshots coming soon",
       items: [
         {
-          ...PROJECT_META[0],
-          title: "WCS Impact Map",
+          ...PROJECT_META[4],
+          title: "Train Movement",
           description:
-            "Interactive map of the state of the planet's protected biological areas, for the Wildlife Conservation Society.",
+            "Complete fitness SaaS platform built end-to-end as a solo developer: coaches manage clients, training and nutrition plans; users track their progress from an installable PWA.",
         },
         {
-          ...PROJECT_META[1],
-          title: "UdG Voluntariat",
+          ...PROJECT_META[5],
+          title: "MAK21",
           description:
-            "Complete volunteering platform for students of the University of Girona.",
+            "Complete redesign of the corporate website for MAK21, a B2B technology distributor: new information architecture, modern responsive design and WordPress implementation.",
         },
         {
           ...PROJECT_META[2],
@@ -362,10 +387,22 @@ const content = {
             "Daily management of dialysis patients for Clínica Girona.",
         },
         {
+          ...PROJECT_META[0],
+          title: "WCS Impact Map",
+          description:
+            "Interactive map of the state of the planet's protected biological areas, for the Wildlife Conservation Society.",
+        },
+        {
           ...PROJECT_META[3],
           title: "Preventing Wildlife Crime",
           description:
             "Assessment of the real impact of interventions against wildlife trafficking (EMMIE framework).",
+        },
+        {
+          ...PROJECT_META[1],
+          title: "UdG Voluntariat",
+          description:
+            "Complete volunteering platform for students of the University of Girona.",
         },
       ],
     },
@@ -386,6 +423,7 @@ const content = {
     game: {
       score: "Perched swallows",
       best: "Best",
+      wires: "Wires",
     },
   },
 };

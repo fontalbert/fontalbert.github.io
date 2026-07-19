@@ -78,10 +78,23 @@ export default function Murmuration() {
       /* sin localStorage */
     }
     let played = false;
+    const HARD_CAP = 8;
+    let maxWires = 2;
+    let awardedForSet = false;
+    // Si se llenan todos los cables activos (pájaros ya posados), se desbloquea uno más
+    const evaluateProgress = () => {
+      if (awardedForSet || maxWires >= HARD_CAP || wires.length !== maxWires) return;
+      const allFull = wires.every((w) => w.slots.every((s) => s.bird && s.bird.mode === "perch"));
+      if (allFull) {
+        maxWires++;
+        awardedForSet = true;
+      }
+    };
     const spawnWire = (x, y) => {
-      if (wires.length >= 3) {
+      if (wires.length >= maxWires) {
         const old = wires.shift();
         old.slots.forEach((s) => s.bird && release(s.bird, false));
+        awardedForSet = false;
       }
       const len = Math.min(120, Math.max(80, W * 0.09));
       const cap = Math.floor(len / 16);
@@ -102,6 +115,7 @@ export default function Murmuration() {
         }
       });
       wires.push(wire);
+      awardedForSet = false;
       played = true;
     };
     const onDbl = (e) => {
@@ -131,6 +145,7 @@ export default function Murmuration() {
         if (age > w.ttl) {
           w.slots.forEach((s) => s.bird && release(s.bird, false));
           wires.splice(wi, 1);
+          awardedForSet = false;
           continue;
         }
         const fade = Math.min(age / 300, 1, (w.ttl - age) / 600);
@@ -248,6 +263,7 @@ export default function Murmuration() {
         ctx.lineTo(b.x + b.vy * k * 0.5 * flap, b.y - b.vx * k * 0.5 * flap);
         ctx.stroke();
       }
+      evaluateProgress();
       // Marcador
       if (perched > best) {
         best = perched;
@@ -263,7 +279,11 @@ export default function Murmuration() {
         ctx.textAlign = "left";
         ctx.globalAlpha = 1.4;
         ctx.fillStyle = color;
-        ctx.fillText(`${labels.score}: ${perched}   ·   ${labels.best}: ${best}`, 20, H - 22);
+        ctx.fillText(
+          `${labels.score}: ${perched}   ·   ${labels.best}: ${best}   ·   ${labels.wires}: ${maxWires}`,
+          20,
+          H - 22
+        );
         ctx.globalAlpha = 1;
       }
     };
