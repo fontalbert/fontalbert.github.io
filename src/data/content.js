@@ -53,7 +53,7 @@ const PROJECT_META = [
   },
   {
     image: "/images/proyectos/preventing_wildlife_crime.jpg",
-    url: "https://collaborations.wcs.org/snappwildlifecrime",
+    url: "https://www.preventingwildlifecrime.com",
     tagLine: "HTML · CSS · Razor · SQL Server · Bootstrap 5",
   },
   {
