@@ -207,24 +207,6 @@ const content = {
           description:
             "Gestión diaria de pacientes de diálisis para la Clínica Girona.",
         },
-        {
-          ...PROJECT_META[0],
-          title: "WCS Impact Map",
-          description:
-            "Mapa interactivo del estado de las áreas biológicas protegidas del planeta, para Wildlife Conservation Society.",
-        },
-        {
-          ...PROJECT_META[3],
-          title: "Preventing Wildlife Crime",
-          description:
-            "Evaluación del impacto real de las intervenciones contra el tráfico de vida silvestre (marco EMMIE).",
-        },
-        {
-          ...PROJECT_META[1],
-          title: "UdG Voluntariat",
-          description:
-            "Plataforma completa de voluntariado para estudiantes de la Universitat de Girona.",
-        },
       ],
     },
     contact: {
@@ -240,6 +222,7 @@ const content = {
     footer: {
       handmade: "Diseñado y construido a mano",
       backToTop: "Volver al alba ↑",
+      tip: "Invítame a un café",
     },
     game: {
       score: "Golondrinas posadas",
@@ -386,24 +369,6 @@ const content = {
           description:
             "Daily management of dialysis patients for Clínica Girona.",
         },
-        {
-          ...PROJECT_META[0],
-          title: "WCS Impact Map",
-          description:
-            "Interactive map of the state of the planet's protected biological areas, for the Wildlife Conservation Society.",
-        },
-        {
-          ...PROJECT_META[3],
-          title: "Preventing Wildlife Crime",
-          description:
-            "Assessment of the real impact of interventions against wildlife trafficking (EMMIE framework).",
-        },
-        {
-          ...PROJECT_META[1],
-          title: "UdG Voluntariat",
-          description:
-            "Complete volunteering platform for students of the University of Girona.",
-        },
       ],
     },
     contact: {
@@ -419,6 +384,7 @@ const content = {
     footer: {
       handmade: "Designed and built by hand",
       backToTop: "Back to dawn ↑",
+      tip: "Buy me a coffee",
     },
     game: {
       score: "Perched swallows",
