@@ -2,7 +2,7 @@ import React from "react";
 import { useLang } from "../lib/contexts";
 
 // Propinas: Stripe Payment Link alojado (USD). Con cadena vacía el enlace no se muestra.
-const TIP_URL = "https://buy.stripe.com/dRmeVfdwp13E8Wu8iKd3i00";
+const TIP_URL = "https://buy.stripe.com/aFacN78c527I2y6buWd3i01";
 
 const Footer = () => {
   const { t } = useLang();
