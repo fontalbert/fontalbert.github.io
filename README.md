@@ -1,31 +1,32 @@
 # [Albert Font · AI Software Engineer](https://fontalbert.github.io)
 
-Personal site of Albert Font — AI Software Engineer, AI Automation & Business Process Engineering.
-"Building software that automates real business processes."
+Web personal de Albert Font — AI Software Engineer, automatización con IA e ingeniería de procesos de negocio.
+"Construyo software que automatiza procesos de negocio reales."
 
-## Design
+## Diseño
 
-"Murmuración": the page is a whole day — the sky moves from dawn to night as you scroll, with a live
-murmuration of swallows in the background (2D canvas flocking that flees the cursor).
-Hidden game: double-click the sky to create a wire where the swallows perch.
+"Murmuración": la página es un día entero — el cielo cambia con el scroll de alba a noche,
+con una murmuración de golondrinas viva de fondo (canvas 2D con flocking que huye del cursor).
+Juego escondido: doble clic en el cielo crea un cable donde se posan las golondrinas.
 
 ## Stack
 
 - **React 19** + **Vite 7**
-- **Tailwind CSS** (design tokens in `tailwind.config.js`)
-- **CSS + IntersectionObserver** reveals — no animation library
-- **Canvas 2D** — swallow murmuration (no 3D libraries)
-- All copy lives in `src/data/content.js` (English); components only read from it
+- **Tailwind CSS** (tokens de diseño en `tailwind.config.js`)
+- **CSS + IntersectionObserver** para las apariciones — sin librería de animación
+- **Canvas 2D** — murmuración de golondrinas (sin librerías 3D)
+- **Bilingüe ES/EN** — castellano por defecto, inglés con el selector del menú. Todo el contenido
+  vive en `src/data/content.js`; los componentes solo leen `content[lang]`
 
-## Development
+## Desarrollo
 
 ```bash
 npm install
-npm run dev      # dev server
-npm run build    # production build in dist/
-npm run preview  # preview the build
+npm run dev      # servidor de desarrollo
+npm run build    # build de producción en dist/
+npm run preview  # previsualizar el build
 ```
 
-## Deployment
+## Despliegue
 
-Every push to `main` runs the GitHub Actions workflow that builds the site and publishes it to GitHub Pages.
+Cada push a `main` lanza el workflow de GitHub Actions que hace el build y publica en GitHub Pages automáticamente.

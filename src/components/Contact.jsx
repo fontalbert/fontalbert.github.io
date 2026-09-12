@@ -3,8 +3,7 @@ import Section from "./Section";
 import Reveal from "./Reveal";
 import Swallow from "./Swallow";
 import Button from "./ui/Button";
-import { useDark } from "../lib/contexts";
-import content from "../data/content";
+import { useDark, useLang } from "../lib/contexts";
 
 const WIRE_SLOTS = 26;
 const EXTERNAL = { target: "_blank", rel: "noopener noreferrer" };
@@ -23,7 +22,8 @@ function generatePerched() {
 
 export default function Contact() {
   const dark = useDark();
-  const c = content.contact;
+  const { t } = useLang();
+  const c = t.contact;
   // La distribución se calcula una sola vez
   const [perched] = useState(generatePerched);
 
@@ -35,7 +35,7 @@ export default function Contact() {
         </Button>
         <Button href={c.ctaLinkedin.href} variant="secondary" {...EXTERNAL}>
           {c.ctaLinkedin.label}
-          <span className="sr-only"> (opens in a new tab)</span>
+          <span className="sr-only"> {t.a11y.newTab}</span>
         </Button>
       </Reveal>
       <Reveal delay={0.2}>
@@ -50,7 +50,7 @@ export default function Contact() {
                   className="border-b-[1.5px] border-current pb-0.5 hover:opacity-70 transition-opacity font-semibold"
                 >
                   {row.text}
-                  {row.external && <span className="sr-only"> (opens in a new tab)</span>}
+                  {row.external && <span className="sr-only"> {t.a11y.newTab}</span>}
                 </a>
               </dd>
             </React.Fragment>

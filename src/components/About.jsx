@@ -1,10 +1,11 @@
 import React from "react";
 import Section from "./Section";
 import Reveal from "./Reveal";
-import content from "../data/content";
+import { useLang } from "../lib/contexts";
 
 export default function About() {
-  const a = content.about;
+  const { t } = useLang();
+  const a = t.about;
   const [statement, ...rest] = a.paragraphs;
   return (
     <Section id="about" phase={4} label={a.label}>

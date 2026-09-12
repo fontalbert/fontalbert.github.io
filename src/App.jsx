@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { SkyContext } from "./lib/contexts";
+import { LanguageContext, SkyContext } from "./lib/contexts";
 import content from "./data/content";
 import Murmuration from "./components/Murmuration";
 import Nav from "./components/Nav";
@@ -31,7 +31,7 @@ const ACCENT = {
   night: ["#e0a755", "rgba(224,167,85,0.22)"],
 };
 
-// Anclas de la web anterior (en castellano) → secciones actuales
+// Anclas de la web anterior → secciones actuales
 const LEGACY_HASHES = {
   "#inicio": "#home",
   "#sobre-mi": "#about",
@@ -56,10 +56,36 @@ const luminance = ([r, g, b]) => {
   return 0.2126 * lin(r) + 0.7152 * lin(g) + 0.0722 * lin(b);
 };
 
+// Castellano por defecto; se recuerda la elección del selector del menú
+function detectLang() {
+  try {
+    const saved = localStorage.getItem("lang");
+    if (saved === "es" || saved === "en") return saved;
+  } catch {
+    /* sin localStorage */
+  }
+  return "es";
+}
+
 const App = () => {
+  const [lang, setLang] = useState(detectLang);
   const [dark, setDark] = useState(false);
   const rootRef = useRef(null);
   const darkRef = useRef(false);
+
+  // Idioma: persistencia, atributo lang y metadatos del documento
+  useEffect(() => {
+    try {
+      localStorage.setItem("lang", lang);
+    } catch {
+      /* sin localStorage */
+    }
+    const t = content[lang];
+    document.documentElement.lang = lang;
+    document.title = t.seo.title;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", t.seo.description);
+  }, [lang]);
 
   // El cielo avanza de alba a noche según el progreso de scroll
   useEffect(() => {
@@ -120,38 +146,40 @@ const App = () => {
   }, []);
 
   return (
-    <SkyContext.Provider value={dark}>
-      <div
-        ref={rootRef}
-        data-phase={dark ? "night" : "day"}
-        className="min-h-screen overflow-x-clip"
-        style={{
-          background: "linear-gradient(#f2e0d8, #fdfbf7)",
-          color: "#232936",
-          transition: "color 0.9s ease",
-        }}
-      >
-        <a href="#main" className="skip-link">
-          {content.nav.skip}
-        </a>
-        <Murmuration />
-        <div className="relative z-[1]">
-          <Nav />
-          <main id="main">
-            <Hero />
-            <WhatIDo />
-            <Work />
-            <HowIWork />
-            <About />
-            <Experience />
-            <Technology />
-            <Philosophy />
-            <Contact />
-          </main>
-          <Footer />
+    <LanguageContext.Provider value={{ lang, setLang }}>
+      <SkyContext.Provider value={dark}>
+        <div
+          ref={rootRef}
+          data-phase={dark ? "night" : "day"}
+          className="min-h-screen overflow-x-clip"
+          style={{
+            background: "linear-gradient(#f2e0d8, #fdfbf7)",
+            color: "#232936",
+            transition: "color 0.9s ease",
+          }}
+        >
+          <a href="#main" className="skip-link">
+            {content[lang].nav.skip}
+          </a>
+          <Murmuration />
+          <div className="relative z-[1]">
+            <Nav />
+            <main id="main">
+              <Hero />
+              <WhatIDo />
+              <Work />
+              <HowIWork />
+              <About />
+              <Experience />
+              <Technology />
+              <Philosophy />
+              <Contact />
+            </main>
+            <Footer />
+          </div>
         </div>
-      </div>
-    </SkyContext.Provider>
+      </SkyContext.Provider>
+    </LanguageContext.Provider>
   );
 };
 

@@ -2,10 +2,11 @@ import React from "react";
 import Reveal from "./Reveal";
 import SunPhase from "./SunPhase";
 import Button from "./ui/Button";
-import content from "../data/content";
+import { useLang } from "../lib/contexts";
 
 export default function Hero() {
-  const h = content.hero;
+  const { t } = useLang();
+  const h = t.hero;
   return (
     <section
       id="home"

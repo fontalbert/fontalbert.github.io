@@ -4,7 +4,7 @@ import Swallow from "./Swallow";
 import Tag from "./ui/Tag";
 import WorkflowVisual from "./visuals/WorkflowVisual";
 import AbstractVisual from "./visuals/AbstractVisual";
-import { useDark } from "../lib/contexts";
+import { useDark, useLang } from "../lib/contexts";
 
 // Arco del sol (mismo motivo que SunPhase): el punto avanza con cada proyecto
 function ArcSun({ index, total }) {
@@ -89,6 +89,7 @@ function Visual({ project, labels }) {
 // Postal de proyecto: categoría · título · descripción · tags · visual · enlace o estado
 export default function ProjectCard({ project, index, total, labels, className = "" }) {
   const dark = useDark();
+  const { t } = useLang();
   const featured = !!project.featured;
   const headingId = `project-${project.number}`;
   const statusLabel = project.status === "coming-soon" ? labels.comingSoon : labels.caseStudySoon;
@@ -145,7 +146,7 @@ export default function ProjectCard({ project, index, total, labels, className =
               ))}
             </p>
           )}
-          <ul className="list-none m-0 p-0 mt-1 flex flex-wrap gap-2" aria-label="Technologies">
+          <ul className="list-none m-0 p-0 mt-1 flex flex-wrap gap-2" aria-label={t.a11y.technologies}>
             {project.tags.map((tag) => (
               <Tag as="li" key={tag}>
                 {tag}
@@ -161,7 +162,7 @@ export default function ProjectCard({ project, index, total, labels, className =
                 className="inline-flex items-center gap-2.5 text-[14px] font-semibold tracking-[0.04em] border-b-[1.5px] border-current pb-1 transition-all hover:gap-4"
               >
                 {labels.viewProject}
-                <span className="sr-only"> (opens in a new tab)</span>
+                <span className="sr-only"> {t.a11y.newTab}</span>
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                   <path d="M1 11 L11 1 M4 1 H11 V8" stroke="currentColor" strokeWidth="1.4" />
                 </svg>

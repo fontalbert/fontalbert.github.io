@@ -2,15 +2,16 @@ import React from "react";
 import Section from "./Section";
 import Reveal from "./Reveal";
 import Tag from "./ui/Tag";
-import content from "../data/content";
+import { useLang } from "../lib/contexts";
 
 // Tecnologías agrupadas en una sola caja, una fila por grupo: amplitud sin lista interminable
 export default function Technology() {
-  const t = content.technology;
+  const { t } = useLang();
+  const tech = t.technology;
   return (
-    <Section id="technology" phase={6} label={t.label}>
+    <Section id="technology" phase={6} label={tech.label}>
       <Reveal className="border-[1.5px] border-current rounded-box overflow-hidden">
-        {t.groups.map((group, i) => (
+        {tech.groups.map((group, i) => (
           <div
             key={group.name}
             className={`grid md:grid-cols-[200px_1fr] gap-x-8 gap-y-3 px-[clamp(20px,3vw,32px)] py-5 ${

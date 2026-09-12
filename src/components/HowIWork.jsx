@@ -1,11 +1,12 @@
 import React from "react";
 import Section from "./Section";
 import Reveal from "./Reveal";
-import content from "../data/content";
+import { useLang } from "../lib/contexts";
 
 // Cinco pasos sobre la misma línea vertical que la cronología de Experiencia
 export default function HowIWork() {
-  const p = content.process;
+  const { t } = useLang();
+  const p = t.process;
   return (
     <Section id="how-i-work" phase={3} label={p.label} title={p.title}>
       <div className="relative pl-[clamp(28px,4vw,44px)]">

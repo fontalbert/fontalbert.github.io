@@ -1,14 +1,16 @@
 import React, { useEffect, useRef } from "react";
-import content from "../data/content";
-
-// Etiquetas del marcador del juego
-const LABELS = content.game;
+import { useLang } from "../lib/contexts";
 
 // Murmuración 2D + juego: doble clic crea un cable temporal y las golondrinas
 // cercanas se posan en él. Récord persistido en localStorage.
 // El color llega por la CSS var --flock (la página la cambia al anochecer).
 export default function Murmuration() {
   const hostRef = useRef(null);
+  const { t } = useLang();
+
+  // Las etiquetas del marcador viven en un ref para no reiniciar el canvas al cambiar de idioma
+  const labelsRef = useRef(t.game);
+  labelsRef.current = t.game;
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -281,8 +283,9 @@ export default function Murmuration() {
         ctx.textAlign = "left";
         ctx.globalAlpha = 1;
         ctx.fillStyle = color;
+        const labels = labelsRef.current;
         ctx.fillText(
-          `${LABELS.score}: ${perched}   ·   ${LABELS.best}: ${best}   ·   ${LABELS.wires}: ${maxWires}`,
+          `${labels.score}: ${perched}   ·   ${labels.best}: ${best}   ·   ${labels.wires}: ${maxWires}`,
           20,
           H - 22
         );

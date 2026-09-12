@@ -1,11 +1,12 @@
 import React from "react";
 import Section from "./Section";
 import Reveal from "./Reveal";
-import content from "../data/content";
+import { useLang } from "../lib/contexts";
 
 // Declaración breve en la caja de trazo fino (misma pieza que el antiguo destacado de IA)
 export default function Philosophy() {
-  const ph = content.philosophy;
+  const { t } = useLang();
+  const ph = t.philosophy;
   return (
     <Section id="philosophy" phase={7} label={ph.label}>
       <Reveal className="border-[1.5px] border-current rounded-box p-[clamp(28px,4vw,48px)]">

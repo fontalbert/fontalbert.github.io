@@ -1,14 +1,15 @@
 import React from "react";
 import Reveal from "./Reveal";
-import content from "../data/content";
+import { useLang } from "../lib/contexts";
 
 // Cabecera de sección: arco del sol + "Fase — Título". El sol avanza por el arco según
-// la fase (0 = alba, última = anochecer). `as` decide la etiqueta: h2 cuando es el título
+// la fase (0 = alba, última = noche). `as` decide la etiqueta: h2 cuando es el título
 // de la sección, p cuando solo acompaña a un título grande.
 export default function SunPhase({ phase, title, center = false, as: Tag = "h2", id, className = "mb-14" }) {
-  const total = content.phases.length;
-  const t = total > 1 ? 0.1 + 0.85 * (phase / (total - 1)) : 0.5;
-  const a = Math.PI * (1 - t);
+  const { t } = useLang();
+  const total = t.phases.length;
+  const p = total > 1 ? 0.1 + 0.85 * (phase / (total - 1)) : 0.5;
+  const a = Math.PI * (1 - p);
   const cx = (22 + Math.cos(a) * 20).toFixed(1);
   const cy = (22 - Math.sin(a) * 20).toFixed(1);
   return (
@@ -22,7 +23,7 @@ export default function SunPhase({ phase, title, center = false, as: Tag = "h2",
         <circle cx={cx} cy={cy} r="3" fill="currentColor" />
       </svg>
       <Tag id={id} className="m-0 text-[13px] font-medium tracking-[0.22em] uppercase">
-        <span aria-hidden="true">{content.phases[phase]} — </span>
+        <span aria-hidden="true">{t.phases[phase]} — </span>
         {title}
       </Tag>
     </Reveal>

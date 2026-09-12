@@ -2,10 +2,11 @@ import React from "react";
 import Section from "./Section";
 import Reveal from "./Reveal";
 import Tag from "./ui/Tag";
-import content from "../data/content";
+import { useLang } from "../lib/contexts";
 
 export default function Experience() {
-  const exp = content.experience;
+  const { t } = useLang();
+  const exp = t.experience;
   return (
     <Section id="experience" phase={5} label={exp.label}>
       <div className="relative pl-[clamp(28px,4vw,44px)]">
@@ -23,9 +24,7 @@ export default function Experience() {
                 {item.period} — {item.company}
               </p>
               <h3 className="m-0 mb-3 text-[clamp(24px,3vw,34px)] font-extrabold tracking-[-0.025em]">{item.title}</h3>
-              {item.subtitle && (
-                <p className="m-0 mb-3 text-[16px] font-medium opacity-85">{item.subtitle}</p>
-              )}
+              {item.subtitle && <p className="m-0 mb-3 text-[16px] font-medium opacity-85">{item.subtitle}</p>}
               <p className="m-0 mb-4 leading-[1.7] opacity-[0.78] max-w-[68ch] [text-wrap:pretty]">{item.description}</p>
               {item.highlights.length > 0 && (
                 <ul className="list-none m-0 mb-4 p-0 flex flex-col gap-2 max-w-[68ch]">
@@ -37,7 +36,7 @@ export default function Experience() {
                   ))}
                 </ul>
               )}
-              <ul className="list-none m-0 p-0 flex flex-wrap gap-2" aria-label="Technologies">
+              <ul className="list-none m-0 p-0 flex flex-wrap gap-2" aria-label={t.a11y.technologies}>
                 {item.tags.map((tag) => (
                   <Tag as="li" key={tag}>
                     {tag}
