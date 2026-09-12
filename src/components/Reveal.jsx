@@ -1,26 +1,18 @@
 import React from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import useReveal from "../lib/useReveal";
 
-// Aparición suave al entrar en el viewport (una sola vez)
-export default function Reveal({ children, delay = 0, className, style }) {
-  const reduce = useReducedMotion();
-  if (reduce) {
-    return (
-      <div className={className} style={style}>
-        {children}
-      </div>
-    );
-  }
+// Aparición suave al entrar en el viewport (una sola vez). Sin librería: la transición
+// vive en .reveal (index.css) y solo se oculta cuando hay JS. Respeta prefers-reduced-motion.
+export default function Reveal({ children, delay = 0, className = "", style, as: Tag = "div", ...rest }) {
+  const [ref, visible] = useReveal();
   return (
-    <motion.div
-      className={className}
-      style={style}
-      initial={{ opacity: 0, y: 26 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.12 }}
-      transition={{ duration: 0.85, delay, ease: [0.2, 0.6, 0.2, 1] }}
+    <Tag
+      ref={ref}
+      className={`reveal ${visible ? "is-visible" : ""} ${className}`}
+      style={{ ...style, "--reveal-delay": `${delay}s` }}
+      {...rest}
     >
       {children}
-    </motion.div>
+    </Tag>
   );
 }

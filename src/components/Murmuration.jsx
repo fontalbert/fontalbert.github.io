@@ -1,16 +1,14 @@
 import React, { useEffect, useRef } from "react";
-import { useLang } from "../lib/contexts";
+import content from "../data/content";
+
+// Etiquetas del marcador del juego
+const LABELS = content.game;
 
 // Murmuración 2D + juego: doble clic crea un cable temporal y las golondrinas
 // cercanas se posan en él. Récord persistido en localStorage.
 // El color llega por la CSS var --flock (la página la cambia al anochecer).
 export default function Murmuration() {
   const hostRef = useRef(null);
-  const { t } = useLang();
-
-  // Las etiquetas del marcador viven en un ref para no reiniciar el canvas al cambiar de idioma
-  const labelsRef = useRef(t.game);
-  labelsRef.current = t.game;
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -130,12 +128,17 @@ export default function Murmuration() {
     let stop = false;
     let rafId;
     let last = 0;
+    let frame = 0;
+    let color = "rgba(35,41,54,0.5)";
     const tick = (time) => {
       if (stop) return;
       rafId = requestAnimationFrame(tick);
       if (time - last < 1000 / 60) return;
       last = time;
-      const color = getComputedStyle(host).getPropertyValue("--flock").trim() || "rgba(35,41,54,0.5)";
+      // --flock solo cambia al anochecer: leerlo cada 30 frames evita forzar un recálculo de estilos por frame
+      if (frame++ % 30 === 0) {
+        color = getComputedStyle(host).getPropertyValue("--flock").trim() || color;
+      }
       ctx.clearRect(0, 0, W, H);
       ctx.lineCap = "round";
       // Cables (debajo de los pájaros)
@@ -274,13 +277,12 @@ export default function Murmuration() {
         }
       }
       if (played || best > 0) {
-        const labels = labelsRef.current;
         ctx.font = '500 12px "Albert Sans", sans-serif';
         ctx.textAlign = "left";
-        ctx.globalAlpha = 1.4;
+        ctx.globalAlpha = 1;
         ctx.fillStyle = color;
         ctx.fillText(
-          `${labels.score}: ${perched}   ·   ${labels.best}: ${best}   ·   ${labels.wires}: ${maxWires}`,
+          `${LABELS.score}: ${perched}   ·   ${LABELS.best}: ${best}   ·   ${LABELS.wires}: ${maxWires}`,
           20,
           H - 22
         );

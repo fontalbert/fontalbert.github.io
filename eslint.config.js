@@ -23,9 +23,9 @@ export default [
     rules: {
       ...js.configs.recommended.rules,
       ...reactHooks.configs.recommended.rules,
-      // 'motion' se usa como <motion.img> en JSX; sin eslint-plugin-react
-      // el analizador no detecta ese uso, así que lo añadimos al patrón
-      'no-unused-vars': ['error', { varsIgnorePattern: '^(motion|[A-Z_])' }],
+      // Sin eslint-plugin-react el analizador no detecta el uso de componentes en JSX:
+      // ignoramos los identificadores en mayúscula (React, componentes, constantes)
+      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]', argsIgnorePattern: '^[A-Z_]' }],
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },

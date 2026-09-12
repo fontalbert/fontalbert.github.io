@@ -1,30 +1,31 @@
-# [Albert Font · Portfolio](https://fontalbert.github.io)
+# [Albert Font · AI Software Engineer](https://fontalbert.github.io)
 
-Portfolio personal de Albert Font Sala, desarrollador fullstack (React · Node.js · C#).
+Personal site of Albert Font — AI Software Engineer, AI Automation & Business Process Engineering.
+"Building software that automates real business processes."
 
-## Diseño
+## Design
 
-"Murmuración": la página es un día entero — el cielo cambia con el scroll de alba a noche,
-con una murmuración de golondrinas viva de fondo (canvas 2D con flocking que huye del cursor).
-Juego escondido: doble clic en el cielo crea un cable donde se posan las golondrinas.
+"Murmuración": the page is a whole day — the sky moves from dawn to night as you scroll, with a live
+murmuration of swallows in the background (2D canvas flocking that flees the cursor).
+Hidden game: double-click the sky to create a wire where the swallows perch.
 
 ## Stack
 
 - **React 19** + **Vite 7**
-- **Tailwind CSS** para los estilos
-- **Framer Motion** — apariciones al hacer scroll
-- **Canvas 2D** — murmuración de golondrinas (sin librerías 3D)
-- **Bilingüe ES/EN** — todo el contenido en `src/data/content.js`, selector en el nav
+- **Tailwind CSS** (design tokens in `tailwind.config.js`)
+- **CSS + IntersectionObserver** reveals — no animation library
+- **Canvas 2D** — swallow murmuration (no 3D libraries)
+- All copy lives in `src/data/content.js` (English); components only read from it
 
-## Desarrollo
+## Development
 
 ```bash
 npm install
-npm run dev      # servidor de desarrollo
-npm run build    # build de producción en dist/
-npm run preview  # previsualizar el build
+npm run dev      # dev server
+npm run build    # production build in dist/
+npm run preview  # preview the build
 ```
 
-## Despliegue
+## Deployment
 
-Cada push a `main` lanza el workflow de GitHub Actions que hace el build y publica en GitHub Pages automáticamente.
+Every push to `main` runs the GitHub Actions workflow that builds the site and publishes it to GitHub Pages.

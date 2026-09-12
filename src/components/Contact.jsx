@@ -1,10 +1,13 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
+import Section from "./Section";
 import Reveal from "./Reveal";
-import SunPhase from "./SunPhase";
 import Swallow from "./Swallow";
-import { useLang, useDark } from "../lib/contexts";
+import Button from "./ui/Button";
+import { useDark } from "../lib/contexts";
+import content from "../data/content";
 
 const WIRE_SLOTS = 26;
+const EXTERNAL = { target: "_blank", rel: "noopener noreferrer" };
 
 function generatePerched() {
   // Distribución con huecos aleatorios, como el cable de la web original
@@ -19,65 +22,40 @@ function generatePerched() {
 }
 
 export default function Contact() {
-  const { t } = useLang();
   const dark = useDark();
-  const c = t.contact;
-  const perched = useRef(generatePerched());
+  const c = content.contact;
+  // La distribución se calcula una sola vez
+  const [perched] = useState(generatePerched);
 
   return (
-    <section id="contacto" className="max-w-[1060px] mx-auto px-6 pt-[150px] pb-10 box-border text-center">
-      <SunPhase phase={5} title={c.title} center />
-      <Reveal>
-        <h2 className="text-[clamp(38px,6.5vw,84px)] font-extrabold tracking-[-0.04em] leading-[1.02] m-0 mb-6">
-          {c.headlineA}
-          <br />
-          <span className="font-light">
-            {c.headlineB}
-            <em className="italic font-normal">{c.headlineEm}</em>.
-          </span>
-        </h2>
+    <Section id="contact" phase={8} label={c.label} title={c.title} subtitle={c.description} titleSize="lg" center>
+      <Reveal delay={0.14} className="flex gap-3.5 flex-wrap justify-center mb-8">
+        <Button href={c.ctaTalk.href} variant="primary">
+          {c.ctaTalk.label}
+        </Button>
+        <Button href={c.ctaLinkedin.href} variant="secondary" {...EXTERNAL}>
+          {c.ctaLinkedin.label}
+          <span className="sr-only"> (opens in a new tab)</span>
+        </Button>
       </Reveal>
-      <Reveal delay={0.08}>
-        <p className="max-w-[480px] mx-auto mb-10 leading-[1.65] opacity-[0.72] [text-wrap:pretty]">
-          {c.description}
-        </p>
-      </Reveal>
-      <Reveal delay={0.14} className="flex gap-3.5 flex-wrap justify-center mb-7">
-        <a
-          href="mailto:albert.font@outlook.com"
-          className="px-8 py-[15px] rounded-full font-semibold text-[15.5px] transition-[transform,background-color,color] duration-300 hover:-translate-y-0.5"
-          style={{
-            background: dark ? "#f1ece3" : "#232936",
-            color: dark ? "#232936" : "#fdfbf7",
-          }}
-        >
-          albert.font@outlook.com
-        </a>
-        <a
-          href="/albert-font-cv.pdf"
-          download="albert-font-cv.pdf"
-          className="border-[1.5px] border-current px-8 py-[13.5px] rounded-full font-semibold text-[15.5px] hover:opacity-70 transition-opacity"
-        >
-          {c.cv}
-        </a>
-      </Reveal>
-      <Reveal delay={0.2} className="flex gap-6 justify-center text-[14px] font-semibold">
-        <a
-          href="https://www.linkedin.com/in/albertfontdev/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border-b-[1.5px] border-current pb-0.5 hover:opacity-70 transition-opacity"
-        >
-          LinkedIn
-        </a>
-        <a
-          href="https://github.com/fontalbert"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="border-b-[1.5px] border-current pb-0.5 hover:opacity-70 transition-opacity"
-        >
-          GitHub
-        </a>
+      <Reveal delay={0.2}>
+        <dl className="inline-grid grid-cols-[auto_auto] gap-x-6 gap-y-2.5 text-left text-[14px] m-0">
+          {c.rows.map((row) => (
+            <React.Fragment key={row.label}>
+              <dt className="font-semibold tracking-[0.06em] uppercase text-[12px] opacity-70 self-center">{row.label}</dt>
+              <dd className="m-0">
+                <a
+                  href={row.href}
+                  {...(row.external ? EXTERNAL : {})}
+                  className="border-b-[1.5px] border-current pb-0.5 hover:opacity-70 transition-opacity font-semibold"
+                >
+                  {row.text}
+                  {row.external && <span className="sr-only"> (opens in a new tab)</span>}
+                </a>
+              </dd>
+            </React.Fragment>
+          ))}
+        </dl>
       </Reveal>
 
       {/* Las golondrinas vuelven al cable */}
@@ -85,11 +63,13 @@ export default function Contact() {
         <img
           src="/wire.svg"
           alt=""
+          width="1000"
+          height="20"
           draggable={false}
-          className="absolute left-0 top-1/2 w-full -translate-y-1/2 opacity-80 transition-[filter] duration-[900ms]"
+          className="absolute left-0 top-1/2 w-full h-auto -translate-y-1/2 opacity-80 transition-[filter] duration-[900ms]"
           style={{ filter: dark ? "invert(0.92)" : "none" }}
         />
-        {perched.current.map((bird, i) => (
+        {perched.map((bird, i) => (
           <span
             key={i}
             className="absolute w-[34px] h-[34px] pointer-events-none transition-[filter] duration-[900ms]"
@@ -103,10 +83,10 @@ export default function Contact() {
             <Swallow variant={bird.variant} facing={bird.facing} size={34} />
           </span>
         ))}
-        <p className="absolute left-1/2 -bottom-3.5 -translate-x-1/2 m-0 text-[12px] italic opacity-55 whitespace-nowrap">
+        <p className="absolute left-1/2 -bottom-3.5 -translate-x-1/2 m-0 text-[12px] italic opacity-70 whitespace-nowrap">
           {c.wireCaption}
         </p>
       </div>
-    </section>
+    </Section>
   );
 }
